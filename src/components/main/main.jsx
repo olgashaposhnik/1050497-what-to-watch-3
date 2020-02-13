@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Main = (props) => {
-  const {name, genre, year, titles} = props;
+  const {name, genre, year, titles, onTitleLinkClick} = props;
   return (
     <div>
       <div className="visually-hidden">
@@ -121,7 +121,11 @@ const Main = (props) => {
                     <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={title} width="280" height="175" />
                   </div>
                   <h3 className="small-movie-card__title">
-                    <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+                    <a
+                      onClick={onTitleLinkClick}
+                      className="small-movie-card__link"
+                      href="movie-page.html">{title}
+                    </a>
                   </h3>
                 </article>);
             })
@@ -153,6 +157,7 @@ Main.propTypes = {
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
   titles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onTitleLinkClick: PropTypes.func.isRequired,
 };
 
 export default Main;
