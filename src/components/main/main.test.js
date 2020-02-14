@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
-import FilmData from ".././tests-mock/tests-mock.js";
+import FilmData from "../tests-mock/tests-mock.js";
 
 // const FilmData = {
 //   NAME: `The Grand Budapest Hotel`,

@@ -2,7 +2,7 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main";
-import FilmData from "./tests-mock/tests-mock.js";
+import FilmData from "../tests-mock/tests-mock.js";
 
 // const FilmData = {
 //   NAME: `The Grand Budapest Hotel`,
