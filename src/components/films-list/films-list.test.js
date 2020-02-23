@@ -1,7 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
-import {FilmData} from "../tests-mock/tests-mock.js";
+import FilmsList from "./films-list.jsx";
 
 const films = [
   {
@@ -38,16 +37,13 @@ const films = [
   },
 ];
 
-it(`Render App`, () => {
+it(`Should render MoviesList component`, () => {
   const tree = renderer
-    .create(<App
-      name={FilmData.NAME}
-      genre={FilmData.GENRE}
-      year={FilmData.YEAR}
+    .create(<FilmsList
       films={films}
+      onTitleLinkClick={() => {}}
     />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
-
