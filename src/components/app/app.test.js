@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import App from "./app.jsx";
 import {FilmData} from "../tests-mock/tests-mock.js";
 
-const films = [
+const Films = [
   {
     image: `img/no-country-for-old-men.jpg`,
     title: `The Lord of the Rings: The Return of the King`,
@@ -44,7 +44,7 @@ it(`Render App`, () => {
       name={FilmData.NAME}
       genre={FilmData.GENRE}
       year={FilmData.YEAR}
-      films={films}
+      films={Films}
     />)
     .toJSON();
 

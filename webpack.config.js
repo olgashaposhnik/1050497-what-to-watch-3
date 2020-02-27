@@ -11,6 +11,7 @@ module.exports = {
     open: true, // чтоб вебпак не открывал ссылку на будущий сайт или наоборот, открывал
     inline: true, // перезагрузка страницы при внесении изменений
     port: 1337,
+    historyApiFallback: true,
   },
   module: {
     rules: [
