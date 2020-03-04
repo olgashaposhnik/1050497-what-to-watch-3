@@ -108,7 +108,6 @@ const FilmDetails = (props) => {
   );
 };
 
-
 FilmDetails.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
