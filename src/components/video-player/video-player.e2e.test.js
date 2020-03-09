@@ -1,11 +1,10 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import FilmCard from "./film-card";
-// import {FilmData} from "../tests-mock/tests-mock.js";
+import VideoPlayer from "./video-player.jsx";
 
 Enzyme.configure({
-  adapter: new Adapter(),
+  adapter: new Adapter()
 });
 
 const film = {
@@ -29,26 +28,45 @@ const film = {
   description: `Directed by Jennifer Lee and Chris Buck, this sequel to the family animated adventure Frozen carries on the adventures of the Snow Queen Elsa (Idina Menzel), Elsa’s kind-hearted and optimistic sister Anna (Kristen Bell), the comedic snowman Olaf (Josh Gad) and mountain guru Kristoff (Jonathan Groff) as they venture deep into the forest to discover the truth about an ancient and legendary mystery of the kingdom they call home. Produced by Peter Del Vecho.`,
 };
 
-it(`Should film card be hovered`, () => {
-  const onFilmCardClickHandler = jest.fn();
-  const onFilmCardMouseOverHandler = jest.fn();
-  const onFilmCardMouseLeaveHandler = jest.fn();
+// it(`Should video play on click`, () => {
+//   const fakePlay = jest
+//     .spyOn(window.HTMLMediaElement.prototype, `play`)
+//     .mockImplementation(() => {});
 
-  const filmCard = shallow(
-      <FilmCard
-        film = {film}
-        onFilmCardClick = {onFilmCardClickHandler}
-        onFilmCardMouseOver = {onFilmCardMouseOverHandler(film)}
-        onFilmCardMouseLeave = {onFilmCardMouseLeaveHandler}
-        isPlaying={true}
-      />
+//   const moviePlayer = mount(
+//       <MoviePlayer movie={movie} muted={true} autoPlay={false} />
+//   );
+
+//   expect(moviePlayer.state(`isPlaying`)).toBe(false);
+//   moviePlayer.simulate(`click`);
+//   expect(moviePlayer.state(`isPlaying`)).toBe(true);
+
+//   expect(fakePlay).toHaveBeenCalled();
+//   fakePlay.mockRestore();
+// });
+
+it(`VideoPlayer should have two states: Play, Pause`, () => {
+  const videoPlayer = mount(
+      <VideoPlayer
+        film={film}
+        muted={true}
+        autoPlay={false}
+        poster={film.image}
+        video={film.preview} />
   );
 
-  filmCard.simulate(`mouseover`);
-  filmCard.simulate(`mouseout`);
+  expect(videoPlayer.state().isPlaying).toBe(false);
+  videoPlayer.simulate(`click`);
+  expect(videoPlayer.state().isPlaying).toBe(true);
 
-  expect(onFilmCardMouseOverHandler.mock.calls.length).toBe(1);
-  expect(onFilmCardMouseOverHandler.mock.calls[0][0]).toMatchObject(film);
-  expect(onFilmCardMouseLeaveHandler.mock.calls.length).toBe(1);
+  // const videoPlayerPaused = mount(
+  //     <VideoPlayer
+  //       film={film}
+  //       muted={true}
+  //       poster={film.image}
+  //       video={film.preview}
+  //       isPlaying={false} />
+  // );
 
+  // expect(videoPlayerPaused.state().isPlaying).toBe(false);
 });

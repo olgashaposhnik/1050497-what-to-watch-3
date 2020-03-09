@@ -3,12 +3,11 @@ import PropTypes from "prop-types";
 
 const FilmDetails = (props) => {
   const {film} = props;
-  const {title, image, fullImage, director, starring, duration, genre, year} = film;
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
         <div className="movie-card__bg">
-          <img src={fullImage} alt={title} />
+          <img src={film.fullImage} alt={film.title} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <header className="page-header movie-card__head">
@@ -27,10 +26,10 @@ const FilmDetails = (props) => {
         </header>
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{title}</h2>
+            <h2 className="movie-card__title">{film.title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{year}</span>
+              <span className="movie-card__genre">{film.genre}</span>
+              <span className="movie-card__year">{film.year}</span>
             </p>
             <div className="movie-card__buttons">
               <button className="btn btn--play movie-card__button" type="button">
@@ -53,7 +52,7 @@ const FilmDetails = (props) => {
       <div className="movie-card__wrap movie-card__translate-top">
         <div className="movie-card__info">
           <div className="movie-card__poster movie-card__poster--big">
-            <img src={image} alt={title} width={218} height={327} />
+            <img src={film.image} alt={film.title} width={218} height={327} />
           </div>
           <div className="movie-card__desc">
             <nav className="movie-nav movie-card__nav">
@@ -73,12 +72,12 @@ const FilmDetails = (props) => {
               <div className="movie-card__text-col">
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Director</strong>
-                  <span className="movie-card__details-value">{director}</span>
+                  <span className="movie-card__details-value">{film.director}</span>
                 </p>
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Starring</strong>
                   <span className="movie-card__details-value">
-                    {starring.map((actor, index) => (
+                    {film.starring.map((actor, index) => (
                       <React.Fragment key={actor + index}>
                         {actor} <br />
                       </React.Fragment>
@@ -89,15 +88,15 @@ const FilmDetails = (props) => {
               <div className="movie-card__text-col">
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Run Time</strong>
-                  <span className="movie-card__details-value">{duration}</span>
+                  <span className="movie-card__details-value">{film.duration}</span>
                 </p>
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Genre</strong>
-                  <span className="movie-card__details-value">{genre}</span>
+                  <span className="movie-card__details-value">{film.genre}</span>
                 </p>
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Released</strong>
-                  <span className="movie-card__details-value">{year}</span>
+                  <span className="movie-card__details-value">{film.year}</span>
                 </p>
               </div>
             </div>

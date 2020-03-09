@@ -189,7 +189,7 @@ exports[`Render App 1`] = `
           <h2
             className="movie-card__title"
           >
-            What We Do in the Shadows
+            Aladdin
           </h2>
           <p
             className="movie-card__meta"
@@ -197,12 +197,12 @@ exports[`Render App 1`] = `
             <span
               className="movie-card__genre"
             >
-              Western
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2018
+              2019
             </span>
           </p>
           <div
@@ -367,6 +367,8 @@ exports[`Render App 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onFilmCardClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -384,7 +386,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               The Lord of the Rings: The Return of the King
             </a>
@@ -392,6 +394,8 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onFilmCardClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -409,7 +413,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               Terminator 2: Judgment Day
             </a>
@@ -417,6 +421,8 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onFilmCardClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -434,7 +440,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               The Shawshank Redemption
             </a>
@@ -442,6 +448,8 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onFilmCardClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -459,7 +467,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               Forrest Gump
             </a>
@@ -467,6 +475,8 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onFilmCardClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -484,7 +494,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               Schindlers List
             </a>
@@ -492,6 +502,8 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onFilmCardClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -509,7 +521,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               Titanic
             </a>
@@ -517,6 +529,8 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onFilmCardClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -534,7 +548,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               The Green Mile
             </a>
@@ -542,6 +556,8 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onFilmCardClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -559,7 +575,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               Back to the Future
             </a>

@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render MoviesList component 1`] = `
+exports[`Should render FilmsList component 1`] = `
 <div
   className="catalog__movies-list"
 >
   <article
     className="small-movie-card catalog__movies-card"
+    onFilmCardClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -20,11 +22,10 @@ exports[`Should render MoviesList component 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
         The Lord of the Rings: The Return of the King
       </a>
@@ -32,6 +33,8 @@ exports[`Should render MoviesList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onFilmCardClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -46,11 +49,10 @@ exports[`Should render MoviesList component 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
         Terminator 2: Judgment Day
       </a>
@@ -58,6 +60,8 @@ exports[`Should render MoviesList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onFilmCardClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -72,11 +76,10 @@ exports[`Should render MoviesList component 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
         The Shawshank Redemption
       </a>
@@ -84,6 +87,8 @@ exports[`Should render MoviesList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onFilmCardClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -98,11 +103,10 @@ exports[`Should render MoviesList component 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
         Forrest Gump
       </a>
@@ -110,6 +114,8 @@ exports[`Should render MoviesList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onFilmCardClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -124,11 +130,10 @@ exports[`Should render MoviesList component 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
         Schindlers List
       </a>
@@ -136,6 +141,8 @@ exports[`Should render MoviesList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onFilmCardClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -150,11 +157,10 @@ exports[`Should render MoviesList component 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
         Titanic
       </a>
@@ -162,6 +168,8 @@ exports[`Should render MoviesList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onFilmCardClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -176,11 +184,10 @@ exports[`Should render MoviesList component 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
         The Green Mile
       </a>
@@ -188,6 +195,8 @@ exports[`Should render MoviesList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onFilmCardClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -202,11 +211,10 @@ exports[`Should render MoviesList component 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
         Back to the Future
       </a>

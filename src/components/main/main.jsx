@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import FilmsList from "../films-list/films-list.jsx";
 
 const Main = (props) => {
-  const {name, genre, year, films, onTitleLinkClick} = props;
+  const {name, genre, year, films, onFilmCardClick} = props;
   return (
     <div>
       <div className="visually-hidden">
@@ -114,7 +114,7 @@ const Main = (props) => {
               <a href="#" className="catalog__genres-link">Thrillers</a>
             </li>
           </ul>
-          <FilmsList films={films} onTitleLinkClick={onTitleLinkClick} />
+          <FilmsList films={films} onFilmCardClick={onFilmCardClick} />
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>
@@ -143,10 +143,16 @@ Main.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired
+        image: PropTypes.string.isRequired,
+        fullImage: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+        duration: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        year: PropTypes.number.isRequired,
       }).isRequired
   ).isRequired,
-  onTitleLinkClick: PropTypes.func.isRequired,
+  onFilmCardClick: PropTypes.func.isRequired,
 };
 
 export default Main;
