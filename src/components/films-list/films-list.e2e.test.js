@@ -168,16 +168,16 @@ const films = [
 ];
 
 it(`Should pass data to handler on click`, () => {
-  const onFilmCardClickHandler = jest.fn();
+  const onFilmCardClick = jest.fn();
 
   const filmsList = mount(
-      <FilmsList films={films} onFilmCardClick={onFilmCardClickHandler} />
+      <FilmsList films={films} onFilmCardClick={onFilmCardClick} />
   );
 
   const filmCard = filmsList.find(`article.small-movie-card.catalog__movies-card`).first();
 
   filmCard.simulate(`click`);
 
-  expect(onFilmCardClickHandler.mock.calls.length).toBe(1);
-  expect(onFilmCardClickHandler.mock.calls[0][0]).toBe(0); // Первый аргумент первого вызова функции был 0
+  expect(onFilmCardClick.mock.calls.length).toBe(1);
+  expect(onFilmCardClick.mock.calls[0][0]).toBe(0); // Первый аргумент первого вызова функции был 0
 });

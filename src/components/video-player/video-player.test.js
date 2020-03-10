@@ -25,7 +25,7 @@ const film = {
 
 it(`Should render VideoPlayer component`, () => {
   const tree = renderer
-    .create(<VideoPlayer film={film} muted={true} />)
+    .create(<VideoPlayer film={film} muted={true} autoPlay={true}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
