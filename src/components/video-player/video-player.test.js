@@ -1,12 +1,6 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import FilmCard from "./film-card";
-// import {FilmData} from "../tests-mock/tests-mock.js";
-
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+import renderer from "react-test-renderer";
+import VideoPlayer from "./video-player.jsx";
 
 const film = {
   image: `img/what-we-do-in-the-shadows.jpg`,
@@ -29,24 +23,10 @@ const film = {
   description: `Directed by Jennifer Lee and Chris Buck, this sequel to the family animated adventure Frozen carries on the adventures of the Snow Queen Elsa (Idina Menzel), Elsa’s kind-hearted and optimistic sister Anna (Kristen Bell), the comedic snowman Olaf (Josh Gad) and mountain guru Kristoff (Jonathan Groff) as they venture deep into the forest to discover the truth about an ancient and legendary mystery of the kingdom they call home. Produced by Peter Del Vecho.`,
 };
 
-it(`Should film card be hovered`, () => {
-  const onFilmCardMouseOver = jest.fn();
-  const onFilmCardMouseLeave = jest.fn();
+it(`Should render VideoPlayer component`, () => {
+  const tree = renderer
+    .create(<VideoPlayer film={film} muted={true} autoPlay={true}/>)
+    .toJSON();
 
-  const filmCard = shallow(
-      <FilmCard
-        film = {film}
-        onFilmCardClick = {() => {}}
-        onFilmCardMouseOver = {() => onFilmCardMouseOver(film)}
-        onFilmCardMouseLeave = {onFilmCardMouseLeave}
-        isPlaying={true}
-      />
-  );
-
-  filmCard.simulate(`mouseover`);
-  filmCard.simulate(`mouseout`);
-
-  expect(onFilmCardMouseOver.mock.calls.length).toBe(1);
-  expect(onFilmCardMouseOver.mock.calls[0][0]).toMatchObject(film);
-  expect(onFilmCardMouseLeave.mock.calls.length).toBe(1);
+  expect(tree).toMatchSnapshot();
 });

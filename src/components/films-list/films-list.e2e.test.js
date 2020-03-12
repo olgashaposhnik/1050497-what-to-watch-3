@@ -1,6 +1,11 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import Enzyme, {mount} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 import FilmsList from "./films-list.jsx";
+
+Enzyme.configure({
+  adapter: new Adapter()
+});
 
 const films = [
   {
@@ -162,13 +167,18 @@ const films = [
   },
 ];
 
-it(`Should render FilmsList component`, () => {
-  const tree = renderer
-    .create(<FilmsList
-      films={films}
-      onFilmCardClick={() => {}}
-    />)
-    .toJSON();
+it(`Should pass data to handler on click`, () => {
+  const onFilmCardClick = jest.fn();
 
-  expect(tree).toMatchSnapshot();
+  const filmsList = mount(
+      <FilmsList films={films} onFilmCardClick={onFilmCardClick} />
+  );
+
+  const filmCard = filmsList.find(`article.small-movie-card.catalog__movies-card`).first();
+
+  filmCard.simulate(`click`);
+
+  expect(onFilmCardClick.mock.calls.length).toBe(1);
+  expect(onFilmCardClick.mock.calls[0][0]).toMatchObject(films[0]); // Первый аргумент первого вызова функции был 0
 });
+
