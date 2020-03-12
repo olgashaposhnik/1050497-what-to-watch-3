@@ -169,7 +169,7 @@ Enzyme.configure({
 });
 
 it(`Should film card be pressed`, () => {
-  const onFilmCardClickHandler = jest.fn();
+  const onFilmCardClick = jest.fn();
 
   const main = mount(
       <Main
@@ -177,7 +177,7 @@ it(`Should film card be pressed`, () => {
         genre={FilmData.GENRE}
         year={FilmData.YEAR}
         films={films}
-        onFilmCardClick={onFilmCardClickHandler}
+        onFilmCardClick={onFilmCardClick}
       />
   );
 
@@ -185,5 +185,5 @@ it(`Should film card be pressed`, () => {
 
   filmCard.props().onClick();
 
-  expect(onFilmCardClickHandler.mock.calls.length).toBe(1);
+  expect(onFilmCardClick.mock.calls.length).toBe(1);
 });

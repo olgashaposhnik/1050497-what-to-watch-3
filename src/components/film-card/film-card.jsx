@@ -9,7 +9,7 @@ const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLe
       className="small-movie-card catalog__movies-card"
       onMouseOver={onFilmCardMouseOver}
       onMouseOut={onFilmCardMouseLeave}
-      onFilmCardClick={onFilmCardClick}
+      onClick={onFilmCardClick}
     >
       <div className="small-movie-card__image">
         {!isPlaying && (

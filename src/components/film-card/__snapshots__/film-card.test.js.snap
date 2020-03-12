@@ -3,7 +3,7 @@
 exports[`Should render MovieCard component 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onFilmCardClick={[Function]}
+  onClick={[Function]}
   onMouseOut={[Function]}
   onMouseOver={[Function]}
 >

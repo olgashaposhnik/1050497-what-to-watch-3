@@ -6,7 +6,7 @@ exports[`Should render FilmsList component 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onFilmCardClick={[Function]}
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -33,7 +33,7 @@ exports[`Should render FilmsList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onFilmCardClick={[Function]}
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -60,7 +60,7 @@ exports[`Should render FilmsList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onFilmCardClick={[Function]}
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -87,7 +87,7 @@ exports[`Should render FilmsList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onFilmCardClick={[Function]}
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -114,7 +114,7 @@ exports[`Should render FilmsList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onFilmCardClick={[Function]}
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -141,7 +141,7 @@ exports[`Should render FilmsList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onFilmCardClick={[Function]}
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -168,7 +168,7 @@ exports[`Should render FilmsList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onFilmCardClick={[Function]}
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -195,7 +195,7 @@ exports[`Should render FilmsList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onFilmCardClick={[Function]}
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >

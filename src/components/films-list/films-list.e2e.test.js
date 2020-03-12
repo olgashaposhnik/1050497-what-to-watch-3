@@ -179,5 +179,6 @@ it(`Should pass data to handler on click`, () => {
   filmCard.simulate(`click`);
 
   expect(onFilmCardClick.mock.calls.length).toBe(1);
-  expect(onFilmCardClick.mock.calls[0][0]).toBe(0); // Первый аргумент первого вызова функции был 0
+  expect(onFilmCardClick.mock.calls[0][0]).toMatchObject(films[0]); // Первый аргумент первого вызова функции был 0
 });
+

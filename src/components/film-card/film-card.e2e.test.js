@@ -30,15 +30,14 @@ const film = {
 };
 
 it(`Should film card be hovered`, () => {
-  const onFilmCardClick = jest.fn();
   const onFilmCardMouseOver = jest.fn();
   const onFilmCardMouseLeave = jest.fn();
 
   const filmCard = shallow(
       <FilmCard
         film = {film}
-        onFilmCardClick = {onFilmCardClick}
-        onFilmCardMouseOver = {onFilmCardMouseOver(film)}
+        onFilmCardClick = {() => {}}
+        onFilmCardMouseOver = {() => onFilmCardMouseOver(film)}
         onFilmCardMouseLeave = {onFilmCardMouseLeave}
         isPlaying={true}
       />
@@ -50,5 +49,4 @@ it(`Should film card be hovered`, () => {
   expect(onFilmCardMouseOver.mock.calls.length).toBe(1);
   expect(onFilmCardMouseOver.mock.calls[0][0]).toMatchObject(film);
   expect(onFilmCardMouseLeave.mock.calls.length).toBe(1);
-
 });
