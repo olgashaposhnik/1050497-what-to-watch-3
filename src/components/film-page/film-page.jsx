@@ -1,10 +1,20 @@
-import React from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
+import Tab from '../tab/tab.jsx';
+import Tabs from '../tabs/tabs.jsx';
 import {getRatingTextValue} from "../../utils/utils.js";
+import FilmsList from '../films-list/films-list.jsx';
+import films from "../../mocks/films";
+
+const MORE_LIKE_THIS_COUNT = 4;
 
 const FilmPage = ({film}) => {
+  const getSimilarFilms = () => {
+    return (films.filter((item) => item.genre === film.genre)).slice(0, MORE_LIKE_THIS_COUNT);
+  };
+
   return (
-    <>
+    <Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
@@ -80,53 +90,70 @@ const FilmPage = ({film}) => {
               />
             </div>
 
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">
-                      Overview
-                    </a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">
-                      Details
-                    </a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">
-                      Reviews
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-rating">
-                <div className="movie-rating__score">{film.rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">
-                    {getRatingTextValue(film.rating)}
-                  </span>
-                  <span className="movie-rating__count">
-                    {film.ratingCount} ratings
-                  </span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                <p>{film.description}</p>
-
-                <p className="movie-card__director">
-                  <strong>Director: {film.director}</strong>
-                </p>
-
-                <p className="movie-card__starring">
-                  <strong>
-                    Starring: {`${film.starring.join(`, `)} and other`}
-                  </strong>
-                </p>
-              </div>
-            </div>
+            <Tabs>
+              <Tab name="Overview">
+                <div className="movie-rating">
+                  <div className="movie-rating__score">{film.rating}</div>
+                  <p className="movie-rating__meta">
+                    <span className="movie-rating__level">{getRatingTextValue(film.rating)}</span>
+                    <span className="movie-rating__count">{film.ratingCount} ratings</span>
+                  </p>
+                </div>
+                <div className="movie-card__text">
+                  <p>{film.description}</p>
+                  <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
+                  <p className="movie-card__starring"><strong>Starring: {film.starring.join(`, `)} and other</strong></p>
+                </div>
+              </Tab>
+              <Tab name="Details">
+                <div className="movie-card__text movie-card__row">
+                  <div className="movie-card__text-col">
+                    <p className="movie-card__details-item">
+                      <strong className="movie-card__details-name">Director</strong>
+                      <span className="movie-card__details-value">{film.director}</span>
+                    </p>
+                    <p className="movie-card__details-item">
+                      <strong className="movie-card__details-name">Starring</strong>
+                      <span className="movie-card__details-value">
+                        {film.starring.join(`, `)}
+                      </span>
+                    </p>
+                  </div>
+                  <div className="movie-card__text-col">
+                    <p className="movie-card__details-item">
+                      <strong className="movie-card__details-name">Run Time</strong>
+                      <span className="movie-card__details-value">{film.duration}</span>
+                    </p>
+                    <p className="movie-card__details-item">
+                      <strong className="movie-card__details-name">Genre</strong>
+                      <span className="movie-card__details-value">{film.genre}</span>
+                    </p>
+                    <p className="movie-card__details-item">
+                      <strong className="movie-card__details-name">Released</strong>
+                      <span className="movie-card__details-value">{film.year}</span>
+                    </p>
+                  </div>
+                </div>
+              </Tab>
+              <Tab name="Reviews">
+                <div className="movie-card__reviews movie-card__row">
+                  <div className="movie-card__reviews-col">
+                    {film.reviews.map((review) => (
+                      <div className="review" key={review.id}>
+                        <blockquote className="review__quote">
+                          <p className="review__text">{review.review}</p>
+                          <footer className="review__details">
+                            <cite className="review__author">{review.author}</cite>
+                            <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
+                          </footer>
+                        </blockquote>
+                        <div className="review__rating">{review.rating}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Tab>
+            </Tabs>
           </div>
         </div>
       </section>
@@ -134,72 +161,9 @@ const FilmPage = ({film}) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-
-          <div className="catalog__movies-list">
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img
-                  src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                  alt="Fantastic Beasts: The Crimes of Grindelwald"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">
-                  Fantastic Beasts: The Crimes of Grindelwald
-                </a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img
-                  src="img/bohemian-rhapsody.jpg"
-                  alt="Bohemian Rhapsody"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">
-                  Bohemian Rhapsody
-                </a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img
-                  src="img/macbeth.jpg"
-                  alt="Macbeth"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">
-                  Macbeth
-                </a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img
-                  src="img/aviator.jpg"
-                  alt="Aviator"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">
-                  Aviator
-                </a>
-              </h3>
-            </article>
-          </div>
+          <FilmsList
+            films={getSimilarFilms(film, MORE_LIKE_THIS_COUNT)}
+            onFilmClick={() => {}} />
         </section>
 
         <footer className="page-footer">
@@ -216,7 +180,7 @@ const FilmPage = ({film}) => {
           </div>
         </footer>
       </div>
-    </>
+    </Fragment>
   );
 };
 
@@ -233,6 +197,13 @@ FilmPage.propTypes = {
     rating: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      review: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.instanceOf(Date).isRequired,
+      rating: PropTypes.number.isRequired,
+    })).isRequired,
   }).isRequired
 };
 
