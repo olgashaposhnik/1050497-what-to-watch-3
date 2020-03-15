@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import {App} from "./app.jsx";
 import {FilmData} from "../tests-mock/tests-mock.js";
 
 const Films = [
@@ -170,9 +170,11 @@ it(`Render App`, () => {
       genre={FilmData.GENRE}
       year={FilmData.YEAR}
       films={Films}
-    />)
+    />,
+    {
+      createNodeMock: () => ({})
+    })
     .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
-

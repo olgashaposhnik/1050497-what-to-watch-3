@@ -15,4 +15,8 @@ const getRatingTextValue = (rating) => {
   } return `Awesome`;
 };
 
-export {getRandomInteger, getRatingTextValue};
+const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
+export {getRandomInteger, getRatingTextValue, extend};

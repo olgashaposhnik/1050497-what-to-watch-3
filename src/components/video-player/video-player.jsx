@@ -8,9 +8,6 @@ export default class VideoPlayer extends PureComponent {
     this._videoRef = createRef();
 
     this.state = {
-      // progress: 0,
-      // isLoading: true,
-      // isPlaying: props.isPlaying,
       isPlaying: false,
     };
 
@@ -32,54 +29,6 @@ export default class VideoPlayer extends PureComponent {
   componentDidMount() {
     this.setState({isPlaying: this.props.autoPlay});
   }
-
-  // componentDidMount() {
-  //   const {src, image} = this.props;
-  //   const video = this._videoRef.current;
-  //   video.src = src;
-  //   video.image = image;
-  //   video.muted = true;
-
-  //   video.oncanplaythrough = () => this.setState({
-  //     isLoading: false,
-  //   });
-
-  //   video.onplay = () => {
-  //     this.setState({
-  //       isPlaying: true,
-  //     });
-  //   };
-
-  //   video.onpause = () => {
-  //     this.setState({
-  //       isPlaying: false,
-  //     });
-  //   };
-
-  //   video.onload = () => {
-  //     this.setState({
-  //       isPlaying: false,
-  //     });
-  //   };
-
-  //   video.ontimeupdate = () => {
-  //     this.setState({
-  //       progress: video.currentTime,
-  //     });
-  //   };
-  // }
-
-  // componentWillUnmount() {
-  //   const video = this._videoRef.current;
-
-  //   video.oncanplaythrough = null;
-  //   video.onplay = null;
-  //   video.onpause = null;
-  //   video.ontimeupdate = null;
-  //   video.onload = null;
-  //   // video.src = ``;
-  //   // video.image = ``;
-  // }
 
   render() {
     const {film, muted, autoPlay} = this.props;
