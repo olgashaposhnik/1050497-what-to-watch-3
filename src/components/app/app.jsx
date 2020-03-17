@@ -25,7 +25,7 @@ class App extends PureComponent {
     const {activeCard} = this.state;
 
     if (activeCard !== null) {
-      return <FilmPage film={this.props.films[activeCard]} />;
+      return <FilmPage film={this.props.films.find((film) => film.id === activeCard.id)} />;
     }
 
     return (

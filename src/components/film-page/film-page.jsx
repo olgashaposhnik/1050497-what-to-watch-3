@@ -163,7 +163,7 @@ const FilmPage = ({film}) => {
           <h2 className="catalog__title">More like this</h2>
           <FilmsList
             films={getSimilarFilms(film, MORE_LIKE_THIS_COUNT)}
-            onFilmClick={() => {}} />
+            onFilmCardClick={() => {}} />
         </section>
 
         <footer className="page-footer">
