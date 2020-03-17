@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import Main from "../main/main.jsx";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import FilmDetails from "../film-details/film-details.jsx";
+// import FilmDetails from "../film-details/film-details.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 
 class App extends PureComponent {
@@ -25,7 +25,7 @@ class App extends PureComponent {
     const {activeCard} = this.state;
 
     if (activeCard !== null) {
-      return <FilmPage film={this.props.films[activeCard]} />;
+      return <FilmPage film={this.props.films.find((film) => film.id === activeCard.id)} />;
     }
 
     return (
@@ -45,10 +45,6 @@ class App extends PureComponent {
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
-          </Route>
-          <Route exact path="//dev-film-details">
-            <FilmDetails
-              film={this.props.films[this.state.activeCard || 0]}/>
           </Route>
         </Switch>
       </BrowserRouter>

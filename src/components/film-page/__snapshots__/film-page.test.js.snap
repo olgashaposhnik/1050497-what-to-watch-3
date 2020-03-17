@@ -162,6 +162,7 @@ Array [
             >
               <li
                 className="movie-nav__item movie-nav__item--active"
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -171,7 +172,8 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -181,7 +183,8 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -235,7 +238,8 @@ Array [
             >
               <strong>
                 Starring: 
-                Alan Alda, Antony Alda, Robert Alda, Norman Alden, Tom Aldredge and other
+                Alan Alda, Antony Alda, Robert Alda, Norman Alden, Tom Aldredge
+                 and other
               </strong>
             </p>
           </div>
@@ -259,6 +263,9 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -275,7 +282,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -283,14 +290,17 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Bohemian Rhapsody"
+              alt="What We Do in the Shadows"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/what-we-do-in-the-shadows.jpg"
               width="280"
             />
           </div>
@@ -299,22 +309,25 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Bohemian Rhapsody
+              What We Do in the Shadows
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Macbeth"
+              alt="Johnny English"
               height="175"
-              src="img/macbeth.jpg"
+              src="img/johnny-english.jpg"
               width="280"
             />
           </div>
@@ -323,22 +336,25 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Macbeth
+              Johnny English
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Aviator"
+              alt="No Country for Old Men"
               height="175"
-              src="img/aviator.jpg"
+              src="img/no-country-for-old-men.jpg"
               width="280"
             />
           </div>
@@ -347,9 +363,9 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Aviator
+              No Country for Old Men
             </a>
           </h3>
         </article>
