@@ -51,10 +51,10 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="//dev-film-page">
-            <FilmPage
+            {/* <FilmPage
               film={this.props.films[this.state.activeCard || 0]}
               onFilmCardClick={this.onFilmCardClickHandler}
-            />
+            /> */}
           </Route>
         </Switch>
       </BrowserRouter>

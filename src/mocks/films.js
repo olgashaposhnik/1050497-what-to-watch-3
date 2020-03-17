@@ -49,7 +49,7 @@ export default [
     id: `3`,
     image: `img/johnny-english.jpg`,
     title: `Johnny English`,
-    genre: `comedy`,
+    genre: `action`,
     fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
     director: `Charles Brackett`,
     starring: [
@@ -69,7 +69,7 @@ export default [
     id: `4`,
     image: `img/no-country-for-old-men.jpg`,
     title: `No Country for Old Men`,
-    genre: `comedy`,
+    genre: `Horror`,
     fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
     director: `Alfred Hitchcock`,
     starring: [
@@ -88,7 +88,7 @@ export default [
     id: `5`,
     image: `img/pulp-fiction.jpg`,
     title: `Pulp Fiction`,
-    genre: `comedy`,
+    genre: `drama`,
     fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
     director: `Peter Jackson`,
     starring: [
@@ -129,7 +129,7 @@ export default [
     id: `7`,
     image: `img/shutter-island.jpg`,
     title: `Shutter Island`,
-    genre: `comedy`,
+    genre: ` Documentary`,
     fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
     director: `Gary Kurtz`,
     starring: [
@@ -148,7 +148,7 @@ export default [
     id: `8`,
     image: `img/we-need-to-talk-about-kevin.jpg`,
     title: `We need to talk about Kevin`,
-    genre: `comedy`,
+    genre: `Crime`,
     fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
     director: `Lorenzo di Bonaventura`,
     starring: [
