@@ -6,7 +6,7 @@ export default [
     image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     genre: `comedy`,
-    fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
+    fullImage: `https://fs.kinomania.ru/file/film_poster/a/1a/a1a37dd9c06f9910100d11fe7dbd90e9.jpeg`,
     director: `J. J. Abrams`,
     starring: [
       `Lee Aaker`,
@@ -50,7 +50,7 @@ export default [
     image: `img/what-we-do-in-the-shadows.jpg`,
     title: `What We Do in the Shadows`,
     genre: `comedy`,
-    fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
+    fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/4/80/480eb54452f63abfa7f2eb0ffb1c62fe.280.190.jpeg`,
     director: `Samuel Goldwyn`,
     starring: [
       `River Alexander`,
@@ -89,7 +89,7 @@ export default [
     image: `img/johnny-english.jpg`,
     title: `Johnny English`,
     genre: `comedy`,
-    fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
+    fullImage: `https://www.kinomania.ru/film/97315/frames/769092`,
     director: `Charles Brackett`,
     starring: [
       `Haskell V. Anderson III`,
@@ -139,7 +139,7 @@ export default [
     image: `img/no-country-for-old-men.jpg`,
     title: `No Country for Old Men`,
     genre: `comedy`,
-    fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
+    fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/b/45/b4568df26077653eeadf29596708c94b.280.190.jpeg`,
     director: `Alfred Hitchcock`,
     starring: [
       `Ben Affleck`,
@@ -174,7 +174,7 @@ export default [
     image: `img/pulp-fiction.jpg`,
     title: `Pulp Fiction`,
     genre: `comedy`,
-    fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
+    fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/9/9b/99bcfcd754a98ce89cb86f73acc04645.280.190.jpeg`,
     director: `Peter Jackson`,
     starring: [
       `Alan Alda`,
@@ -211,7 +211,7 @@ export default [
     image: `img/revenant.jpg`,
     title: `Revenant`,
     genre: `comedy`,
-    fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
+    fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/a/d9/ad972f10e0800b49d76fed33a21f6698.280.190.jpeg`,
     director: `Tim Burton`,
     starring: [
       `Jon Abrahams`,
@@ -247,7 +247,7 @@ export default [
     image: `img/shutter-island.jpg`,
     title: `Shutter Island`,
     genre: `comedy`,
-    fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
+    fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/b/29/b29eed44276144e4e8103a661f9a78b7.280.190.jpeg`,
     director: `Gary Kurtz`,
     starring: [
       `Alan Aisenberg`,
@@ -289,7 +289,7 @@ export default [
     image: `img/we-need-to-talk-about-kevin.jpg`,
     title: `We need to talk about Kevin`,
     genre: `comedy`,
-    fullImage: `https://www.google.com/url?sa=i&url=https%3A%2F%2Ftsn.ua%2Fru%2Fbooks%2Fv-seti-poyavilsya-tizer-k-filmu-zahar-berkut-video-1358730.html&psig=AOvVaw0KWyl2zdo6yLT0CN3BJlnw&ust=1583063472147000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDB2JfZ9ucCFQAAAAAdAAAAABAD`,
+    fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/f/f8/ff8c1a3bd0c441439a0a081e560c85fc.280.190.jpeg`,
     director: `Lorenzo di Bonaventura`,
     starring: [
       `Keegan Allen`,
