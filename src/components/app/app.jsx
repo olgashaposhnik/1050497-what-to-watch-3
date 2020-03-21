@@ -27,7 +27,8 @@ class App extends PureComponent {
 
     if (activeCard !== null) {
       return <FilmPage
-        film={activeCard}
+        film={this.props.films.find((film) => film.id === activeCard.id)}
+        films={films}
         onFilmCardClick={this.onFilmCardClickHandler}
       />;
     }
@@ -83,6 +84,17 @@ App.propTypes = {
         duration: PropTypes.string.isRequired,
         genre: PropTypes.string.isRequired,
         year: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              rating: PropTypes.number.isRequired,
+              date: PropTypes.instanceOf(Date).isRequired,
+              author: PropTypes.string.isRequired,
+              review: PropTypes.string.isRequired
+            })
+        ).isRequired
       }).isRequired
   ).isRequired,
 };

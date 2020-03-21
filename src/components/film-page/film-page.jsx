@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {getRatingTextValue} from "../../utils/utils.js";
+import SimilarFilms from '../similar-films/similar-films.jsx';
 
-const FilmPage = ({film}) => {
+const FilmPage = ({film, films, onFilmCardClick}) => {
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -134,72 +135,10 @@ const FilmPage = ({film}) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-
-          <div className="catalog__movies-list">
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img
-                  src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                  alt="Fantastic Beasts: The Crimes of Grindelwald"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">
-                  Fantastic Beasts: The Crimes of Grindelwald
-                </a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img
-                  src="img/bohemian-rhapsody.jpg"
-                  alt="Bohemian Rhapsody"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">
-                  Bohemian Rhapsody
-                </a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img
-                  src="img/macbeth.jpg"
-                  alt="Macbeth"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">
-                  Macbeth
-                </a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img
-                  src="img/aviator.jpg"
-                  alt="Aviator"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">
-                  Aviator
-                </a>
-              </h3>
-            </article>
-          </div>
+          <SimilarFilms
+            film={film}
+            films={films}
+            onFilmCardClick={onFilmCardClick}/>
         </section>
 
         <footer className="page-footer">
@@ -233,7 +172,31 @@ FilmPage.propTypes = {
     rating: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
-  }).isRequired
+  }).isRequired,
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        fullImage: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+        duration: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        year: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              rating: PropTypes.number.isRequired,
+              date: PropTypes.string.isRequired,
+              author: PropTypes.string.isRequired,
+              review: PropTypes.string.isRequired
+            })
+        ).isRequired
+      }).isRequired
+  ).isRequired,
+  onFilmCardClick: PropTypes.func.isRequired
 };
 
 export default FilmPage;

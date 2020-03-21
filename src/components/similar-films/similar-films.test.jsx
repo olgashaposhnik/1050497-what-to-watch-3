@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import FilmPage from "./film-page.jsx";
+import SimilarFilms from "./similar-films.jsx";
 
 const film = {
   image: `img/what-we-do-in-the-shadows.jpg`,
@@ -367,13 +367,12 @@ const films = [
   },
 ];
 
-it(`Should render FilmPage component`, () => {
-  const tree = renderer.create(
-      <FilmPage film={film}
-        films={films}
-        onFilmCardClick={() => {}}
-      />
-  ).toJSON();
+it(`Should render SimilarFilms component`, () => {
+  const tree = renderer
+    .create(
+        <SimilarFilms films={films} film={film} onFilmCardClick={() => {}} />
+    )
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

@@ -19,4 +19,8 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-export {getRandomInteger, getRatingTextValue, extend};
+const randomDate = (start, end) => {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+};
+
+export {getRandomInteger, getRatingTextValue, extend, randomDate};
