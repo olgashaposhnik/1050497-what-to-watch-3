@@ -162,6 +162,7 @@ Array [
             >
               <li
                 className="movie-nav__item movie-nav__item--active"
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -171,7 +172,8 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -181,7 +183,8 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -235,7 +238,8 @@ Array [
             >
               <strong>
                 Starring: 
-                Alan Alda, Antony Alda, Robert Alda, Norman Alden, Tom Aldredge and other
+                Alan Alda, Antony Alda, Robert Alda, Norman Alden, Tom Aldredge
+                 and other
               </strong>
             </p>
           </div>
@@ -402,9 +406,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Titanic"
+              alt="What We Do in the Shadows"
               height="175"
-              src="img/shutter-island.jpg"
+              src="img/what-we-do-in-the-shadows.jpg"
               width="280"
             />
           </div>
@@ -415,7 +419,7 @@ Array [
               className="small-movie-card__link"
               href="#"
             >
-              Titanic
+              What We Do in the Shadows
             </a>
           </h3>
         </article>
@@ -429,34 +433,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="The Green Mile"
-              height="175"
-              src="img/revenant.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="#"
-            >
-              The Green Mile
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Back to the Future"
+              alt="Johnny English"
               height="175"
               src="img/johnny-english.jpg"
               width="280"
@@ -469,7 +446,34 @@ Array [
               className="small-movie-card__link"
               href="#"
             >
-              Back to the Future
+              Johnny English
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="No Country for Old Men"
+              height="175"
+              src="img/no-country-for-old-men.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="#"
+            >
+              No Country for Old Men
             </a>
           </h3>
         </article>
