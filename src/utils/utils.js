@@ -15,4 +15,12 @@ const getRatingTextValue = (rating) => {
   } return `Awesome`;
 };
 
-export {getRandomInteger, getRatingTextValue};
+const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
+const randomDate = (start, end) => {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+};
+
+export {getRandomInteger, getRatingTextValue, extend, randomDate};

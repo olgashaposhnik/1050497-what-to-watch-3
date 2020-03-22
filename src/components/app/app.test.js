@@ -1,9 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import {App} from "./app.jsx";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
 import {FilmData} from "../tests-mock/tests-mock.js";
 
-const Films = [
+const mockStore = configureStore([]);
+
+const ALL_GENRES = `All genres`;
+
+const films = [
   {
     image: `img/no-country-for-old-men.jpg`,
     title: `The Lord of the Rings: The Return of the King`,
@@ -24,18 +30,25 @@ const Films = [
     description: `Director/co-writer Dan Scanlon’s animated adventure comedy features characters voiced by Tom Holland, Chris Pratt, Julia Louis-Dreyfus, and Octavia Spencer. It's about two teenage elf brothers living in a post-magic world who stumble upon a spell that can bring their father back to life. They embark on an epic and heartwarming adventure to see the spell through when it only brings back the lower half of their father’s body.`,
     reviews: [
       {
-        id: `14`,
-        review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-        author: `Elsa Fernández-Santos`,
-        date: new Date(),
-        rating: 4.7,
+        id: `1`,
+        review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
+        author: `Shaun Munro`,
+        date: `01.02.2009`,
+        rating: 8.8,
       },
       {
-        id: `15`,
-        review: `Boreshot`,
-        author: `Jeff Mitchell`,
-        date: new Date(),
-        rating: 3.8,
+        id: `2`,
+        review: `Having your characters self-consciously point out every cliché doesn't magically erase the fact your film is full of clichés.`,
+        author: `Richard Trenholm`,
+        date: `07.06.14`,
+        rating: 6.5,
+      },
+      {
+        id: `3`,
+        review: `You can almost smell the garbage in the street!`,
+        author: `Dennis Schwartz`,
+        date: `07.08.2015`,
+        rating: 3.6,
       },
     ]
   },
@@ -59,17 +72,24 @@ const Films = [
     description: `Director Jay Roach’s biographical drama film stars Charlize Theron, Nicole Kidman, Margot Robbie, and John Lithgow. It fictionalizes the combined efforts of Fox News anchors Gretchen Carlson and Megyn Kelly to successfully sue Fox News CEO and founder Roger Ailes for sexual harassment in 2016. They resist intimidation and self-censorship to address pervasive sexism in the Fox newsroom.`,
     reviews: [
       {
-        id: `14`,
-        review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-        author: `Elsa Fernández-Santos`,
-        date: new Date(),
-        rating: 4.0,
+        id: `1`,
+        review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
+        author: `Shaun Munro`,
+        date: `01.02.2009`,
+        rating: 8.8,
       },
       {
-        id: `15`,
-        review: `Boreshot`,
-        author: `Jeff Mitchell`,
-        date: new Date(),
+        id: `2`,
+        review: `Having your characters self-consciously point out every cliché doesn't magically erase the fact your film is full of clichés.`,
+        author: `Richard Trenholm`,
+        date: `07.06.14`,
+        rating: 6.5,
+      },
+      {
+        id: `3`,
+        review: `You can almost smell the garbage in the street!`,
+        author: `Dennis Schwartz`,
+        date: `07.08.2015`,
         rating: 3.6,
       },
     ]
@@ -96,18 +116,25 @@ const Films = [
     description: `On his 85th birthday, acclaimed crime novelist Harlan Thrombey (Christopher Plummer) is found dead in his room with his throat slit. Just as authorities are about to dismiss the tragedy as suicide due to the lack of evidence to prove otherwise, Detective Benoit Blanc (Daniel Craig) arrives at the scene to conduct his own investigation. Soon, it is revealed that all of Thrombey’s family have a reason to murder the family’s patriarch. Will Marta (Ana de Armas), the dead man’s caregiver and most trusted confidante, be able to help identify who the killer is? Written and directed by Rian Johnson.`,
     reviews: [
       {
-        id: `14`,
-        review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-        author: `Elsa Fernández-Santos`,
-        date: new Date(),
-        rating: 3.9,
+        id: `1`,
+        review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
+        author: `Shaun Munro`,
+        date: `01.02.2009`,
+        rating: 8.8,
       },
       {
-        id: `15`,
-        review: `Boreshot`,
-        author: `Jeff Mitchell`,
-        date: new Date(),
-        rating: 4.8,
+        id: `2`,
+        review: `Having your characters self-consciously point out every cliché doesn't magically erase the fact your film is full of clichés.`,
+        author: `Richard Trenholm`,
+        date: `07.06.14`,
+        rating: 6.5,
+      },
+      {
+        id: `3`,
+        review: `You can almost smell the garbage in the street!`,
+        author: `Dennis Schwartz`,
+        date: `07.08.2015`,
+        rating: 3.6,
       },
     ]
   },
@@ -132,18 +159,25 @@ const Films = [
     description: `Writer-director Leigh Whannell’s science fiction horror film is a contemporary female-centric adaptation of H. G. Wells' 1897 novel of the same name. It stars Elisabeth Moss as a domestic abuse survivor who is convinced that her abusive scientist ex-boyfriend has discovered a way to make himself invisible, and that he's stalking her after faking his own death and leaving her a sizable part of his fortune. Oliver Jackson-Cohen and Aldis Hodge co-star.`,
     reviews: [
       {
-        id: `14`,
-        review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-        author: `Elsa Fernández-Santos`,
-        date: new Date(),
-        rating: 9.0,
+        id: `1`,
+        review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
+        author: `Shaun Munro`,
+        date: `01.02.2009`,
+        rating: 8.8,
       },
       {
-        id: `15`,
-        review: `Boreshot`,
-        author: `Jeff Mitchell`,
-        date: new Date(),
-        rating: 5.7,
+        id: `2`,
+        review: `Having your characters self-consciously point out every cliché doesn't magically erase the fact your film is full of clichés.`,
+        author: `Richard Trenholm`,
+        date: `07.06.14`,
+        rating: 6.5,
+      },
+      {
+        id: `3`,
+        review: `You can almost smell the garbage in the street!`,
+        author: `Dennis Schwartz`,
+        date: `07.08.2015`,
+        rating: 3.6,
       },
     ]
   },
@@ -166,18 +200,25 @@ const Films = [
     description: `Elena (Naomi Scott), a young engineer, unwittingly stumbles upon new government technology that could hold significant and dangerous ramifications for society. However, her discovery garners attention from the wrong sort of people, so it is up to two special operatives (Kristen Stewart and Ella Balinska) to mobilize, protecting Elena and the future of the planet in the process. Written and directed by Elizabeth Banks.`,
     reviews: [
       {
-        id: `14`,
-        review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-        author: `Elsa Fernández-Santos`,
-        date: new Date(),
-        rating: 8.5,
+        id: `1`,
+        review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
+        author: `Shaun Munro`,
+        date: `01.02.2009`,
+        rating: 8.8,
       },
       {
-        id: `15`,
-        review: `Boreshot`,
-        author: `Jeff Mitchell`,
-        date: new Date(),
-        rating: 4.8,
+        id: `2`,
+        review: `Having your characters self-consciously point out every cliché doesn't magically erase the fact your film is full of clichés.`,
+        author: `Richard Trenholm`,
+        date: `07.06.14`,
+        rating: 6.5,
+      },
+      {
+        id: `3`,
+        review: `You can almost smell the garbage in the street!`,
+        author: `Dennis Schwartz`,
+        date: `07.08.2015`,
+        rating: 3.6,
       },
     ]
   },
@@ -200,18 +241,25 @@ const Films = [
     description: `Rob Bilott (Mark Ruffalo) is a Cincinnati lawyer whose specialization is defending corporate entities. One day, a farmer from West Virginia named Wilbur Tennant (Bill Camp) barges into his office and blackmails him into helping him sue the Dupont company for poisoning the Dry Run Creek. Rob decides to check out the situation himself, and what he sees convinces him to take on the case. His boss, Tom Terp (Tim Robbins), is supportive of his endeavor to stop the company from causing any more harm to the environment, but his wife Sarah (Anne Hathaway) isn’t as receptive. Directed by Todd Haynes.`,
     reviews: [
       {
-        id: `14`,
-        review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-        author: `Elsa Fernández-Santos`,
-        date: new Date(),
-        rating: 3.8,
+        id: `1`,
+        review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
+        author: `Shaun Munro`,
+        date: `01.02.2009`,
+        rating: 8.8,
       },
       {
-        id: `15`,
-        review: `Boreshot`,
-        author: `Jeff Mitchell`,
-        date: new Date(),
-        rating: 5.7,
+        id: `2`,
+        review: `Having your characters self-consciously point out every cliché doesn't magically erase the fact your film is full of clichés.`,
+        author: `Richard Trenholm`,
+        date: `07.06.14`,
+        rating: 6.5,
+      },
+      {
+        id: `3`,
+        review: `You can almost smell the garbage in the street!`,
+        author: `Dennis Schwartz`,
+        date: `07.08.2015`,
+        rating: 3.6,
       },
     ]
   },
@@ -236,18 +284,25 @@ const Films = [
     description: `Directed by Jennifer Lee and Chris Buck, this sequel to the family animated adventure Frozen carries on the adventures of the Snow Queen Elsa (Idina Menzel), Elsa’s kind-hearted and optimistic sister Anna (Kristen Bell), the comedic snowman Olaf (Josh Gad) and mountain guru Kristoff (Jonathan Groff) as they venture deep into the forest to discover the truth about an ancient and legendary mystery of the kingdom they call home. Produced by Peter Del Vecho.`,
     reviews: [
       {
-        id: `14`,
-        review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-        author: `Elsa Fernández-Santos`,
-        date: new Date(),
-        rating: 4.8,
+        id: `1`,
+        review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
+        author: `Shaun Munro`,
+        date: `01.02.2009`,
+        rating: 8.8,
       },
       {
-        id: `15`,
-        review: `Boreshot`,
-        author: `Jeff Mitchell`,
-        date: new Date(),
-        rating: 7.0,
+        id: `2`,
+        review: `Having your characters self-consciously point out every cliché doesn't magically erase the fact your film is full of clichés.`,
+        author: `Richard Trenholm`,
+        date: `07.06.14`,
+        rating: 6.5,
+      },
+      {
+        id: `3`,
+        review: `You can almost smell the garbage in the street!`,
+        author: `Dennis Schwartz`,
+        date: `07.08.2015`,
+        rating: 3.6,
       },
     ]
   },
@@ -274,31 +329,46 @@ const Films = [
     description: `Director Autumn de Wilde’s dramedy is an adaptation of Jane Austen’s beloved 1815 novel of manners of the same name. Starring Anya Taylor-Joy, Johnny Flynn, Josh O'Connor, and Bill Nighy, it's about a headstrong, high-spirited, and privileged young woman who severely overestimates her matchmaking abilities as she meddles in the romantic lives of those around her. Hard-won knowledge about the intricacies of love compels her to reconsider her vow to never marry.`,
     reviews: [
       {
-        id: `14`,
-        review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-        author: `Elsa Fernández-Santos`,
-        date: new Date(),
-        rating: 6.9,
+        id: `1`,
+        review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
+        author: `Shaun Munro`,
+        date: `01.02.2009`,
+        rating: 8.8,
       },
       {
-        id: `15`,
-        review: `Boreshot`,
-        author: `Jeff Mitchell`,
-        date: new Date(),
-        rating: 10,
+        id: `2`,
+        review: `Having your characters self-consciously point out every cliché doesn't magically erase the fact your film is full of clichés.`,
+        author: `Richard Trenholm`,
+        date: `07.06.14`,
+        rating: 6.5,
+      },
+      {
+        id: `3`,
+        review: `You can almost smell the garbage in the street!`,
+        author: `Dennis Schwartz`,
+        date: `07.08.2015`,
+        rating: 3.6,
       },
     ]
   },
 ];
 
-it(`Render App`, () => {
+it(`Should render App`, () => {
+  const store = mockStore({
+    genre: ALL_GENRES,
+    films
+  });
+
   const tree = renderer
-    .create(<App
-      name={FilmData.NAME}
-      genre={FilmData.GENRE}
-      year={FilmData.YEAR}
-      films={Films}
-    />)
+    .create(
+        <Provider store={store}>
+          <App
+            name={FilmData.NAME}
+            genre={FilmData.GENRE}
+            year={FilmData.YEAR}
+            films={films}
+          />,
+        </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

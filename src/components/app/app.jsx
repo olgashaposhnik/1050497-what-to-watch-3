@@ -2,7 +2,8 @@ import React, {PureComponent} from "react";
 import Main from "../main/main.jsx";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-// import FilmDetails from "../film-details/film-details.jsx";
+import {connect} from "react-redux";
+// import {ActionCreator} from "../../reducer.js";
 import FilmPage from "../film-page/film-page.jsx";
 
 class App extends PureComponent {
@@ -25,7 +26,11 @@ class App extends PureComponent {
     const {activeCard} = this.state;
 
     if (activeCard !== null) {
-      return <FilmPage film={this.props.films.find((film) => film.id === activeCard.id)} />;
+      return <FilmPage
+        film={this.props.films.find((film) => film.id === activeCard.id)}
+        films={films}
+        onFilmCardClick={this.onFilmCardClickHandler}
+      />;
     }
 
     return (
@@ -46,11 +51,24 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
+          <Route exact path="//dev-film-page">
+            {/* <FilmPage
+              film={this.props.films[this.state.activeCard || 0]}
+              onFilmCardClick={this.onFilmCardClickHandler}
+            /> */}
+          </Route>
         </Switch>
       </BrowserRouter>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  activeCard: state.activeCard
+});
+
+// const mapDispatchToProps = (dispatch) => ({
+// });
 
 App.propTypes = {
   name: PropTypes.string.isRequired,
@@ -66,8 +84,20 @@ App.propTypes = {
         duration: PropTypes.string.isRequired,
         genre: PropTypes.string.isRequired,
         year: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              rating: PropTypes.number.isRequired,
+              date: PropTypes.instanceOf(Date).isRequired,
+              author: PropTypes.string.isRequired,
+              review: PropTypes.string.isRequired
+            })
+        ).isRequired
       }).isRequired
   ).isRequired,
 };
 
-export default App;
+export {App};
+export default connect(mapStateToProps)(App);

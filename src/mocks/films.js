@@ -1,4 +1,4 @@
-import {getRandomInteger} from "../utils/utils.js";
+import {getRandomInteger, randomDate} from "../utils/utils.js";
 
 export default [
   {
@@ -26,7 +26,7 @@ export default [
         id: `1`,
         review: `An intriguing litmus test for audiences, The Hunt amuses with its provocatively ambiguous political stance, even if the genre film underneath is relatively boilerplate thriller fare.`,
         author: `Shaun Munro`,
-        date: new Date(),
+        date: randomDate(new Date(2012, 0, 1), new Date()),
         rating: getRandomInteger(0, 100) / 10,
       },
       {
@@ -49,7 +49,7 @@ export default [
     id: `2`,
     image: `img/what-we-do-in-the-shadows.jpg`,
     title: `What We Do in the Shadows`,
-    genre: `comedy`,
+    genre: `action`,
     fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/4/80/480eb54452f63abfa7f2eb0ffb1c62fe.280.190.jpeg`,
     director: `Samuel Goldwyn`,
     starring: [
@@ -88,7 +88,7 @@ export default [
     id: `3`,
     image: `img/johnny-english.jpg`,
     title: `Johnny English`,
-    genre: `comedy`,
+    genre: `Crime`,
     fullImage: `https://www.kinomania.ru/film/97315/frames/769092`,
     director: `Charles Brackett`,
     starring: [
@@ -138,7 +138,7 @@ export default [
     id: `4`,
     image: `img/no-country-for-old-men.jpg`,
     title: `No Country for Old Men`,
-    genre: `comedy`,
+    genre: `Documentary`,
     fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/b/45/b4568df26077653eeadf29596708c94b.280.190.jpeg`,
     director: `Alfred Hitchcock`,
     starring: [
@@ -246,7 +246,7 @@ export default [
     id: `7`,
     image: `img/shutter-island.jpg`,
     title: `Shutter Island`,
-    genre: `comedy`,
+    genre: `drama`,
     fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/b/29/b29eed44276144e4e8103a661f9a78b7.280.190.jpeg`,
     director: `Gary Kurtz`,
     starring: [
@@ -288,7 +288,7 @@ export default [
     id: `8`,
     image: `img/we-need-to-talk-about-kevin.jpg`,
     title: `We need to talk about Kevin`,
-    genre: `comedy`,
+    genre: `Horror`,
     fullImage: `https://fs.kinomania.ru/image/file/film_wallpaper/f/f8/ff8c1a3bd0c441439a0a081e560c85fc.280.190.jpeg`,
     director: `Lorenzo di Bonaventura`,
     starring: [
@@ -323,4 +323,3 @@ export default [
     ]
   },
 ];
-

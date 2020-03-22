@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import FilmPage from "./film-page.jsx";
+import SimilarFilms from "./similar-films.jsx";
 
 const film = {
   image: `img/what-we-do-in-the-shadows.jpg`,
@@ -21,22 +21,6 @@ const film = {
   rating: 3.8,
   ratingCount: 854,
   description: `Directed by Jennifer Lee and Chris Buck, this sequel to the family animated adventure Frozen carries on the adventures of the Snow Queen Elsa (Idina Menzel), Elsa’s kind-hearted and optimistic sister Anna (Kristen Bell), the comedic snowman Olaf (Josh Gad) and mountain guru Kristoff (Jonathan Groff) as they venture deep into the forest to discover the truth about an ancient and legendary mystery of the kingdom they call home. Produced by Peter Del Vecho.`,
-  reviews: [
-    {
-      id: `14`,
-      review: `"The actress and director Kasi Lemmons turns this brutal story into a series of implausible adventures, crudely developed, and with characters that are too flat.`,
-      author: `Elsa Fernández-Santos`,
-      date: new Date(),
-      rating: 9.6,
-    },
-    {
-      id: `15`,
-      review: `Boreshot`,
-      author: `Jeff Mitchell`,
-      date: new Date(),
-      rating: 3.6,
-    },
-  ]
 };
 
 const films = [
@@ -383,13 +367,12 @@ const films = [
   },
 ];
 
-it(`Should render FilmPage component`, () => {
-  const tree = renderer.create(
-      <FilmPage film={film}
-        films={films}
-        onFilmCardClick={() => {}}
-      />
-  ).toJSON();
+it(`Should render SimilarFilms component`, () => {
+  const tree = renderer
+    .create(
+        <SimilarFilms films={films} film={film} onFilmCardClick={() => {}} />
+    )
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

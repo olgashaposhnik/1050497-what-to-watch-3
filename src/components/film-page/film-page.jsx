@@ -5,15 +5,16 @@ import Tabs from '../tabs/tabs.jsx';
 import {getRatingTextValue} from "../../utils/utils.js";
 import FilmsList from '../films-list/films-list.jsx';
 import films from "../../mocks/films";
+import SimilarFilms from '../similar-films/similar-films.jsx';
 
 const MORE_LIKE_THIS_COUNT = 4;
 
-const FilmPage = ({film}) => {
-  const getSimilarFilms = () => {
+const FilmPage = ({film, films, onFilmCardClick}) => {
+    const getSimilarFilms = () => {
     return (films.filter((item) => item.genre === film.genre)).slice(0, MORE_LIKE_THIS_COUNT);
   };
 
-  return (
+    return (
     <Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
@@ -161,9 +162,10 @@ const FilmPage = ({film}) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <FilmsList
+          <SimilarFilms
+            film={film}
             films={getSimilarFilms(film, MORE_LIKE_THIS_COUNT)}
-            onFilmCardClick={() => {}} />
+            onFilmCardClick={onFilmCardClick}/>
         </section>
 
         <footer className="page-footer">
@@ -197,14 +199,31 @@ FilmPage.propTypes = {
     rating: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      review: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.instanceOf(Date).isRequired,
-      rating: PropTypes.number.isRequired,
-    })).isRequired,
-  }).isRequired
+  }).isRequired,
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        fullImage: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+        duration: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        year: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              rating: PropTypes.number.isRequired,
+              date: PropTypes.string.isRequired,
+              author: PropTypes.string.isRequired,
+              review: PropTypes.string.isRequired
+            })
+        ).isRequired
+      }).isRequired
+  ).isRequired,
+  onFilmCardClick: PropTypes.func.isRequired
 };
 
 export default FilmPage;
