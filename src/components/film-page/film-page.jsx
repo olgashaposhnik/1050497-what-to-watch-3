@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 import Tab from '../tab/tab.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import {getRatingTextValue} from "../../utils/utils.js";
-import FilmsList from '../films-list/films-list.jsx';
-import films from "../../mocks/films";
+// import FilmsList from '../films-list/films-list.jsx';
+// import films from "../../mocks/films";
 import SimilarFilms from '../similar-films/similar-films.jsx';
 
 const MORE_LIKE_THIS_COUNT = 4;
 
 const FilmPage = ({film, films, onFilmCardClick}) => {
-    const getSimilarFilms = () => {
+  const getSimilarFilms = () => {
     return (films.filter((item) => item.genre === film.genre)).slice(0, MORE_LIKE_THIS_COUNT);
   };
 
-    return (
+  return (
     <Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
@@ -199,6 +199,14 @@ FilmPage.propTypes = {
     rating: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          rating: PropTypes.number.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired,
+          author: PropTypes.string.isRequired,
+          review: PropTypes.string.isRequired
+        })
+    ).isRequired
   }).isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape({
@@ -216,7 +224,7 @@ FilmPage.propTypes = {
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               rating: PropTypes.number.isRequired,
-              date: PropTypes.string.isRequired,
+              date: PropTypes.instanceOf(Date).isRequired,
               author: PropTypes.string.isRequired,
               review: PropTypes.string.isRequired
             })

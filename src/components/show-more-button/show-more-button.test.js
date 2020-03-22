@@ -1,15 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
-import {FilmData} from "../tests-mock/tests-mock.js";
-import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
-
-const mockStore = configureStore([]);
-
-const ALL_GENRES = `All genres`;
-
-const FILMS_SHOWED_BY_START = 8;
+import {ShowMoreButton} from "./show-more-button.jsx";
 
 const films = [
   {
@@ -355,24 +346,16 @@ const films = [
   },
 ];
 
-it(`Should Main render correctly`, () => {
-  const store = mockStore({
-    genre: ALL_GENRES,
-    films,
-    filmsShowedByStart: FILMS_SHOWED_BY_START
-  });
+const FILMS_SHOWED_BY_START = 8;
 
+it(`Should render ShowMoreButton component`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <Main
-            name={FilmData.NAME}
-            genre={FilmData.GENRE}
-            year={FilmData.YEAR}
-            films={films}
-            onFilmCardClick={() => {}}
-          />
-        </Provider>
+        <ShowMoreButton
+          films={films}
+          filmsShowedByStart={FILMS_SHOWED_BY_START}
+          showMoreFilms={() => {}}
+        />
     )
     .toJSON();
 

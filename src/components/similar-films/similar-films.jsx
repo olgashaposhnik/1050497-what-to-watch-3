@@ -48,7 +48,7 @@ SimilarFilms.propTypes = {
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               rating: PropTypes.number.isRequired,
-              date: PropTypes.string.isRequired,
+              date: PropTypes.instanceOf(Date).isRequired,
               author: PropTypes.string.isRequired,
               review: PropTypes.string.isRequired
             })
