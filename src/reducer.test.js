@@ -3,9 +3,12 @@ import films from "./mocks/films";
 
 const ALL_GENRES = `All genres`;
 
+const FILMS_SHOWED_BY_START = 8;
+
 const initialState = {
   genre: ALL_GENRES,
-  films
+  films,
+  filmsShowedByStart: FILMS_SHOWED_BY_START
 };
 
 it(`Reducer without additional parameters should return initial state`, () => {
@@ -23,6 +26,19 @@ it(`Reducer should change genre`, () => {
       )
   ).toEqual({
     genre: `Comedy`
+  });
+});
+
+it(`Reducer should increase showed films`, () => {
+  expect(
+      reducer(
+          {filmsShowedByStart: FILMS_SHOWED_BY_START},
+          {
+            type: ActionType.SHOW_MORE_FILMS
+          }
+      )
+  ).toEqual({
+    filmsShowedByStart: 16
   });
 });
 
