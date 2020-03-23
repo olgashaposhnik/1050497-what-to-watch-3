@@ -232,6 +232,8 @@ it(`Should render GenresList component`, () => {
           genre={ALL_GENRES}
           changeGenre={() => {}}
           onFilmCardClick={() => {}}
+          returnShowedFilmsToStart={() => {}}
+
         />
     )
     .toJSON();

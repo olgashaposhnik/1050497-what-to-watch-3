@@ -16,13 +16,15 @@ class GenresList extends PureComponent {
   }
 
   getFilmsByGenre(genre, films) {
+    const {filmsShowedByStart} = this.props;
+
     return genre === ALL_GENRES
-      ? films
-      : films.filter((film) => film.genre === genre);
+      ? films.slice(0, filmsShowedByStart)
+      : films.filter((film) => film.genre === genre).slice(0, filmsShowedByStart);
   }
 
   render() {
-    const {films, genre, changeGenre, onFilmCardClick} = this.props;
+    const {films, genre, changeGenre, onFilmCardClick, returnShowedFilmsToStart} = this.props;
 
     return (
       <>
@@ -38,6 +40,7 @@ class GenresList extends PureComponent {
                 className="catalog__genres-link"
                 onClick={() => {
                   changeGenre(availableGenre);
+                  returnShowedFilmsToStart();
                 }}
               >
                 {availableGenre}
@@ -57,12 +60,16 @@ class GenresList extends PureComponent {
 
 const mapStateToProps = (state) => ({
   genre: state.genre,
-  films: state.films
+  films: state.films,
+  filmsShowedByStart: state.filmsShowedByStart
 });
 
 const mapDispatchToProps = (dispatch) => ({
   changeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
+  },
+  returnShowedFilmsToStart() {
+    dispatch(ActionCreator.returnShowedFilmsToStart());
   }
 });
 
@@ -92,7 +99,10 @@ GenresList.propTypes = {
   ).isRequired,
   genre: PropTypes.string.isRequired,
   changeGenre: PropTypes.func.isRequired,
-  onFilmCardClick: PropTypes.func.isRequired
+  onFilmCardClick: PropTypes.func.isRequired,
+  filmsShowedByStart: PropTypes.number.isRequired,
+  returnShowedFilmsToStart: PropTypes.func.isRequired
 };
+
 export {GenresList};
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
