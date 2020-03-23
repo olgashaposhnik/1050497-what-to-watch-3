@@ -231,6 +231,7 @@ const films = [
 it(`Should call handler on genre link click`, () => {
   const changeGenreHandler = jest.fn();
   const filmCardClickHandler = jest.fn();
+  const returnShowedFilmsToStartHandler = jest.fn();
 
   const genresList = mount(
       <GenresList
@@ -238,6 +239,7 @@ it(`Should call handler on genre link click`, () => {
         genre={ALL_GENRES}
         changeGenre={changeGenreHandler}
         onFilmCardClick={filmCardClickHandler}
+        returnShowedFilmsToStart={returnShowedFilmsToStartHandler}
       />
   );
 
@@ -246,6 +248,6 @@ it(`Should call handler on genre link click`, () => {
   genreLink.simulate(`click`);
 
   expect(changeGenreHandler.mock.calls.length).toBe(1);
-
   expect(changeGenreHandler.mock.calls[0][0]).toBe(ALL_GENRES);
+  expect(returnShowedFilmsToStartHandler.mock.calls.length).toBe(1);
 });
