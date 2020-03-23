@@ -4,6 +4,7 @@ import films from "./mocks/films.js";
 const ALL_GENRES = `All genres`;
 
 const FILMS_SHOWED_BY_START = 8;
+const FILMS_SHOWED_BY_BUTTON = 8;
 
 const initialState = {
   genre: ALL_GENRES,
@@ -15,6 +16,7 @@ const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
+  RETURN_SHOWED_FILMS_TO_START: `RETURN_SHOWED_FILMS_TO_START`
 };
 
 const ActionCreator = {
@@ -29,6 +31,10 @@ const ActionCreator = {
     type: ActionType.SHOW_MORE_FILMS,
     payload: null
   }),
+  returnShowedFilmsToStart: () => ({
+    type: ActionType.RETURN_SHOWED_FILMS_TO_START,
+    payload: null
+  })
 };
 
 const reducer = (state = initialState, action) => {
@@ -51,7 +57,12 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.SHOW_MORE_FILMS:
       return extend(state, {
-        filmsShowedByStart: state.filmsShowedByStart + 8
+        filmsShowedByStart: state.filmsShowedByStart + FILMS_SHOWED_BY_BUTTON
+      });
+
+    case ActionType.RETURN_SHOWED_FILMS_TO_START:
+      return extend(state, {
+        filmsShowedByStart: FILMS_SHOWED_BY_START
       });
   }
 
