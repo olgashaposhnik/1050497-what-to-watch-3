@@ -171,7 +171,12 @@ it(`Should pass data to handler on click`, () => {
   const onFilmCardClick = jest.fn();
 
   const filmsList = mount(
-      <FilmsList films={films} onFilmCardClick={onFilmCardClick} />
+      <FilmsList films={films}
+        onFilmCardClick={onFilmCardClick}
+        onFilmCardMouseOver={() => {}}
+        onFilmCardMouseLeave={() => {}}
+        isPlaying
+      />
   );
 
   const filmCard = filmsList.find(`article.small-movie-card.catalog__movies-card`).first();

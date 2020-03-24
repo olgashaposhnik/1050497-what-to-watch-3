@@ -1,70 +1,23 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import FilmCard from "../film-card/film-card.jsx";
 import PropTypes from "prop-types";
 
-const VIDEO_PLAYER_DELAY = 1000;
-
-class FilmsList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeFilmCard: null,
-      isPlaying: false
-    };
-
-    this.filmCardHoverHandler = this.filmCardHoverHandler.bind(this);
-    this.filmCardMouseLeaveHandler = this.filmCardMouseLeaveHandler.bind(this);
-    this.filmCardPreviewPlayHandler = this.filmCardPreviewPlayHandler.bind(this);
-  }
-
-  filmCardPreviewPlayHandler(activeFilmCard) {
-    setTimeout(() => {
-      if (this.state.activeFilmCard === activeFilmCard) {
-        this.setState((prevState) => ({
-          isPlaying: !prevState.isPlaying
-        }));
-      }
-    }, VIDEO_PLAYER_DELAY);
-  }
-
-  filmCardHoverHandler(activeFilmCard) {
-    this.setState(
-        () => ({
-          activeFilmCard
-        }),
-        () => this.filmCardPreviewPlayHandler(activeFilmCard)
-    );
-  }
-
-  filmCardMouseLeaveHandler() {
-    this.setState(() => ({
-      activeFilmCard: null,
-      isPlaying: false
-    }));
-  }
-
-  render() {
-    const {films, onFilmCardClick} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {films.map((film, index) => (
-          <FilmCard
-            key={film.title + index}
-            film={film}
-            onFilmCardClick={() => onFilmCardClick(film)}
-            onFilmCardMouseOver={() => this.filmCardHoverHandler(index)}
-            onFilmCardMouseLeave={this.filmCardMouseLeaveHandler}
-            isPlaying={
-              this.state.activeFilmCard === index && this.state.isPlaying
-            }
-          />
-        ))}
-      </div>
-    );
-  }
-}
+const FilmsList = ({films, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLeave, activeFilmCard, isPlaying}) => {
+  return (
+    <div className="catalog__movies-list">
+      {films.map((film, index) => (
+        <FilmCard
+          key={film.title + index}
+          film={film}
+          onFilmCardClick={() => onFilmCardClick(film)}
+          onFilmCardMouseOver={() => onFilmCardMouseOver(index)}
+          onFilmCardMouseLeave={onFilmCardMouseLeave}
+          isPlaying={activeFilmCard === index && isPlaying}
+        />
+      ))}
+    </div>
+  );
+};
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
@@ -82,7 +35,11 @@ FilmsList.propTypes = {
         description: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired
+  onFilmCardClick: PropTypes.func.isRequired,
+  onFilmCardMouseOver: PropTypes.func.isRequired,
+  onFilmCardMouseLeave: PropTypes.func.isRequired,
+  activeFilmCard: PropTypes.number,
+  isPlaying: PropTypes.bool.isRequired
 };
 
 export default FilmsList;

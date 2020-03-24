@@ -3,6 +3,9 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer.js";
 import FilmsList from "../films-list/films-list.jsx";
+import withActiveFilmCard from "../hocs/with-active-film-card/with-active-film-card.jsx";
+
+const FilmsListWrapped = withActiveFilmCard(FilmsList);
 
 const ALL_GENRES = `All genres`;
 
@@ -49,7 +52,7 @@ class GenresList extends PureComponent {
           ))}
         </ul>
 
-        <FilmsList
+        <FilmsListWrapped
           films={this.getFilmsByGenre(genre, films)}
           onFilmCardClick={onFilmCardClick}
         />
