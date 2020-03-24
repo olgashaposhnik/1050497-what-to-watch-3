@@ -1,13 +1,12 @@
 import React from "react";
-import Enzyme, {mount} from "enzyme";
+import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {GenresList} from "./genres-list.jsx";
+import withActiveFilmCard from "./with-active-film-card.jsx";
 
-const ALL_GENRES = `All genres`;
+configure({adapter: new Adapter()});
 
-Enzyme.configure({
-  adapter: new Adapter()
-});
+const Component = () => <div />;
+const ComponentWrapped = withActiveFilmCard(Component);
 
 const films = [
   {
@@ -228,27 +227,16 @@ const films = [
   },
 ];
 
-it(`Should call handler on genre link click`, () => {
-  const changeGenreHandler = jest.fn();
-  const filmCardClickHandler = jest.fn();
-  const returnShowedFilmsToStartHandler = jest.fn();
-
-  const genresList = mount(
-      <GenresList
-        films={films}
-        genre={ALL_GENRES}
-        changeGenre={changeGenreHandler}
-        onFilmCardClick={filmCardClickHandler}
-        returnShowedFilmsToStart={returnShowedFilmsToStartHandler}
-        onFilmCardMouseOver={() => {}}
-      />
+it(`Should change active film card on mouseover or mouseleave`, () => {
+  const wrapper = shallow(
+      <ComponentWrapped films={films} onFilmCardClick={() => {}} />
   );
 
-  const genreLink = genresList.find(`a.catalog__genres-link`).first();
+  expect(wrapper.props().activeFilmCard).toEqual(null);
 
-  genreLink.simulate(`click`);
+  wrapper.props().onFilmCardMouseOver(0);
+  expect(wrapper.props().activeFilmCard).toEqual(0);
 
-  expect(changeGenreHandler.mock.calls.length).toBe(1);
-  expect(changeGenreHandler.mock.calls[0][0]).toBe(ALL_GENRES);
-  expect(returnShowedFilmsToStartHandler.mock.calls.length).toBe(1);
+  wrapper.props().onFilmCardMouseLeave();
+  expect(wrapper.props().activeFilmCard).toEqual(null);
 });
