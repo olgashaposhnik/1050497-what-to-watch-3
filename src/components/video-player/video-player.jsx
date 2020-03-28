@@ -54,14 +54,14 @@ export default class VideoPlayer extends PureComponent {
 
   componentDidMount() {
     // this.setState({isPlaying: this.props.autoPlay});
-    this._videoRef.onloadedmetadata = () => { // событие Событие loadedmetadata происходит при загрузке мета-данных для указанного аудио/видео. Мета-данные для аудио/видео состоят из: длительность, размеры (только видео) и текстовые дорожки.
+    this._videoRef.current.onloadedmetadata = () => { // событие Событие loadedmetadata происходит при загрузке мета-данных для указанного аудио/видео. Мета-данные для аудио/видео состоят из: длительность, размеры (только видео) и текстовые дорожки.
       this.setState({
         isPlaying: this.props.autoPlay,
         duration: this._videoRef.duration
       });
     };
 
-    this._videoRef.ontimeupdate = () => // Событие ontimeupdate наступает, когда позиция воспроизведения аудио / видео изменилась.
+    this._videoRef.current.ontimeupdate = () => // Событие ontimeupdate наступает, когда позиция воспроизведения аудио / видео изменилась.
       this.setState({
         currentTime: this._videoRef.currentTime
       });
@@ -84,7 +84,7 @@ export default class VideoPlayer extends PureComponent {
           <source src={film.preview} />
         </video>
 
-        <button type="button" className="player__exit" onExitButtonClick={onExitButtonClick}>
+        <button type="button" className="player__exit" onClick={onExitButtonClick}>
           Exit
         </button>
 
