@@ -8,7 +8,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const film =   {
+const film = {
   image: `img/johnny-english.jpg`,
   title: `Back to the Future`,
   genre: `comedy`,

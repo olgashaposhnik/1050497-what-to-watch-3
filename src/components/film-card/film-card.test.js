@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import FilmCard from "./film-card.jsx";
 
-const film =   {
+const film = {
   image: `img/johnny-english.jpg`,
   title: `Back to the Future`,
   genre: `comedy`,

@@ -5,7 +5,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 // import {ActionCreator} from "../../reducer.js";
 import FilmPage from "../film-page/film-page.jsx";
-import VideoPlayer from "../video-player/video-player.jsx"; // пока убрала
+// import VideoPlayer from "../video-player/video-player.jsx"; // пока убрала
 
 class App extends PureComponent {
   constructor(props) {
@@ -71,14 +71,14 @@ class App extends PureComponent {
               onFilmCardClick={this.onFilmCardClickHandler}
             /> */}
           </Route>
-          <Route exact path="/dev-video-player">
+          {/* <Route exact path="/dev-video-player">
             <VideoPlayer
               autoPlay={false}
               muted={true}
               // film={this.state.activeCard} // проверить
               // film={this.props.films.find((film) => film.id === this.state.activeCard.id)}
             />
-          </Route>
+          </Route> */}
         </Switch>
       </BrowserRouter>
     );

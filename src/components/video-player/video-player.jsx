@@ -78,13 +78,13 @@ export default class VideoPlayer extends PureComponent {
           poster={film.image}
           width="100%"
           autoPlay={autoPlay}
-          onPlayClick={this.videoPlayerHandler}
+          onClick={this.videoPlayerHandler}
           className="player__video"
         >
           <source src={film.preview} />
         </video>
 
-        <button type="button" className="player__exit" onClick={onExitButtonClick}>
+        <button type="button" className="player__exit" onExitButtonClick={onExitButtonClick}>
           Exit
         </button>
 
@@ -125,7 +125,7 @@ export default class VideoPlayer extends PureComponent {
             <button
               type="button"
               className="player__full-screen"
-              onFullScreenClick={this.fullscreenHandler}
+              onClick={this.fullscreenHandler}
             >
               <svg viewBox="0 0 27 27" width="27" height="27">
                 <use xlinkHref="#full-screen" />
