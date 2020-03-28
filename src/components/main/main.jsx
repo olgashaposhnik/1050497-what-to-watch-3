@@ -3,10 +3,18 @@ import PropTypes from "prop-types";
 // import FilmsList from "../films-list/films-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
+import VideoPlayer from "../video-player/video-player.jsx";
 
 const Main = (props) => {
-  const {name, genre, year, onFilmCardClick} = props;
-  return (
+  const {name, genre, year, onFilmCardClick, isVideoPlaying, onVideoPlayerClick, film} = props;
+  return isVideoPlaying ? (
+    <VideoPlayer
+      onExitButtonClick={onVideoPlayerClick}
+      film={film}
+      autoPlay={false}
+      muted={true}
+    />
+  ) : (
     <div>
       <div className="visually-hidden">
         {/* inject:svg */}<svg xmlns="http://www.w3.org/2000/svg" xmlnsxlinkhref="http://www.w3.org/1999/xlink"><symbol id="add" viewBox="0 0 19 20">
@@ -64,7 +72,7 @@ const Main = (props) => {
                 <span className="movie-card__year">{year}</span>
               </p>
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={onVideoPlayerClick}>
                   <svg viewBox="0 0 19 19" width={19} height={19}>
                     <use xlinkHref="#play-s" />
                   </svg>
@@ -123,6 +131,29 @@ Main.propTypes = {
       }).isRequired
   ).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
+  isVideoPlaying: PropTypes.bool.isRequired,
+  onVideoPlayerClick: PropTypes.func.isRequired,
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    fullImage: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+    duration: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    ratingCount: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          rating: PropTypes.number.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired,
+          author: PropTypes.string.isRequired,
+          review: PropTypes.string.isRequired
+        })
+    ).isRequired
+  }).isRequired,
 };
 
 export default Main;

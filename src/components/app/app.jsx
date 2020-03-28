@@ -5,31 +5,42 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 // import {ActionCreator} from "../../reducer.js";
 import FilmPage from "../film-page/film-page.jsx";
+import VideoPlayer from "../video-player/video-player.jsx"; // пока убрала
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeCard: null
+      activeCard: null,
+      isVideoPlaying: false
     };
 
     this.onFilmCardClickHandler = this.onFilmCardClickHandler.bind(this);
+    this.videoPlayerHandler = this.videoPlayerHandler.bind(this);
   }
 
   onFilmCardClickHandler(activeCard) {
     this.setState({activeCard});
   }
 
+  videoPlayerHandler() {
+    this.setState({
+      isVideoPlaying: !this.state.isVideoPlaying
+    });
+  }
+
   _renderApp() {
     const {name, genre, year, films} = this.props;
-    const {activeCard} = this.state;
+    const {activeCard, isVideoPlaying} = this.state;
 
     if (activeCard !== null) {
       return <FilmPage
         film={this.props.films.find((film) => film.id === activeCard.id)}
         films={films}
         onFilmCardClick={this.onFilmCardClickHandler}
+        isVideoPlaying={isVideoPlaying}
+        onVideoPlayerClick={this.videoPlayerHandler}
       />;
     }
 
@@ -39,7 +50,10 @@ class App extends PureComponent {
         genre={genre}
         year={year}
         films={films}
+        film={activeCard || films[0]}
         onFilmCardClick={this.onFilmCardClickHandler}
+        isVideoPlaying={isVideoPlaying}
+        onVideoPlayerClick={this.videoPlayerHandler}
       />
     );
   }
@@ -56,6 +70,14 @@ class App extends PureComponent {
               film={this.props.films[this.state.activeCard || 0]}
               onFilmCardClick={this.onFilmCardClickHandler}
             /> */}
+          </Route>
+          <Route exact path="/dev-video-player">
+            <VideoPlayer
+              autoPlay={false}
+              muted={true}
+              // film={this.state.activeCard} // проверить
+              // film={this.props.films.find((film) => film.id === this.state.activeCard.id)}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

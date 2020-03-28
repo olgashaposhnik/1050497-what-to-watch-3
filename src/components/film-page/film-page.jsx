@@ -6,15 +6,23 @@ import {getRatingTextValue} from "../../utils/utils.js";
 // import FilmsList from '../films-list/films-list.jsx';
 // import films from "../../mocks/films";
 import SimilarFilms from '../similar-films/similar-films.jsx';
+import VideoPlayer from "../video-player/video-player.jsx";
 
 const MORE_LIKE_THIS_COUNT = 4;
 
-const FilmPage = ({film, films, onFilmCardClick}) => {
+const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onVideoPlayerClick}) => {
   const getSimilarFilms = () => {
     return (films.filter((item) => item.genre === film.genre)).slice(0, MORE_LIKE_THIS_COUNT);
   };
 
-  return (
+  return isVideoPlaying ? (
+    <VideoPlayer
+      onExitButtonClick={onVideoPlayerClick}
+      film={film}
+      autoPlay={false}
+      muted={true}
+    />
+  ) : (
     <Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
@@ -56,7 +64,7 @@ const FilmPage = ({film, films, onFilmCardClick}) => {
               <div className="movie-card__buttons">
                 <button
                   className="btn btn--play movie-card__button"
-                  type="button"
+                  type="button" onClick={onVideoPlayerClick}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -231,7 +239,9 @@ FilmPage.propTypes = {
         ).isRequired
       }).isRequired
   ).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired
+  onFilmCardClick: PropTypes.func.isRequired,
+  isVideoPlaying: PropTypes.bool.isRequired,
+  onVideoPlayerClick: PropTypes.func.isRequired,
 };
 
 export default FilmPage;
