@@ -45,11 +45,15 @@ export default class VideoPlayer extends PureComponent {
   // }
 
   getVideoProgress() {
-    return (this._videoRef.current.currentTime / this._videoRef.current.duration) * 100;
+    return this._videoRef.current
+      ? (this._videoRef.current.currentTime / this._videoRef.current.duration) * 100
+      : 0;
   }
 
   getFormattedTime() {
-    return formatTime(this._videoRef.current.duration - this._videoRef.current.currentTime);
+    return this._videoRef.current
+      ? formatTime(this._videoRef.current.duration - this._videoRef.current.currentTime)
+      : 0;
   }
 
   componentDidMount() {
@@ -61,10 +65,13 @@ export default class VideoPlayer extends PureComponent {
       });
     };
 
-    this._videoRef.current.ontimeupdate = () => // Событие ontimeupdate наступает, когда позиция воспроизведения аудио / видео изменилась.
-      this.setState({
-        currentTime: this._videoRef.current.currentTime
-      });
+    this._videoRef.current.ontimeupdate = () => { // Событие ontimeupdate наступает, когда позиция воспроизведения аудио / видео изменилась.
+      if (this._videoRef.current) {
+        this.setState({
+          currentTime: this._videoRef.current ? this._videoRef.current.currentTime : 0
+        });
+      }
+    };
   }
 
   render() {

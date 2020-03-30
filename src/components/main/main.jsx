@@ -92,7 +92,7 @@ const Main = (props) => {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <GenresList onFilmCardClick={onFilmCardClick} />
+          <GenresList onFilmCardClick={onFilmCardClick} activeFilmCard={props.activeFilmCard} onExitButtonClick={onExitButtonClick}/>
           <div className="catalog__more">
             <ShowMoreButton />
           </div>
@@ -133,6 +133,7 @@ Main.propTypes = {
   onFilmCardClick: PropTypes.func.isRequired,
   isVideoPlaying: PropTypes.bool.isRequired,
   onExitButtonClick: PropTypes.func.isRequired,
+  activeFilmCard: PropTypes.number,
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,

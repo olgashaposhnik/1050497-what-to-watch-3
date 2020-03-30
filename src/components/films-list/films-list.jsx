@@ -39,7 +39,7 @@ FilmsList.propTypes = {
   onFilmCardClick: PropTypes.func.isRequired,
   onFilmCardMouseOver: PropTypes.func.isRequired,
   onFilmCardMouseLeave: PropTypes.func.isRequired,
-  activeFilmCard: PropTypes.number.isRequired,
+  activeFilmCard: PropTypes.number,
   isPlaying: PropTypes.bool.isRequired,
   onExitButtonClick: PropTypes.func.isRequired
 };

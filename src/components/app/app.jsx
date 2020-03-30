@@ -50,6 +50,7 @@ class App extends PureComponent {
         genre={genre}
         year={year}
         films={films}
+        activeFilmCard={activeCard && activeCard.id || -1}
         film={activeCard || films[0]}
         onFilmCardClick={this.onFilmCardClickHandler}
         isVideoPlaying={isVideoPlaying}

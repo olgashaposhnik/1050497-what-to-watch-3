@@ -173,7 +173,9 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
           <SimilarFilms
             film={film}
             films={getSimilarFilms(film, MORE_LIKE_THIS_COUNT)}
-            onFilmCardClick={onFilmCardClick}/>
+            onFilmCardClick={onFilmCardClick}
+            onExitButtonClick={onExitButtonClick}
+          />
         </section>
 
         <footer className="page-footer">

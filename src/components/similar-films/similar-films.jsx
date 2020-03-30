@@ -12,11 +12,12 @@ const getSimilarFilms = (films, film) => {
   );
 };
 
-const SimilarFilms = ({films, film, onFilmCardClick}) => {
+const SimilarFilms = ({films, film, onFilmCardClick, onExitButtonClick}) => {
   return (
     <FilmsListWrapped
       films={getSimilarFilms(films, film)}
       onFilmCardClick={onFilmCardClick}
+      onExitButtonClick={onExitButtonClick}
     />
   );
 };
@@ -66,7 +67,8 @@ SimilarFilms.propTypes = {
         ).isRequired
       }).isRequired
   ).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired
+  onFilmCardClick: PropTypes.func.isRequired,
+  onExitButtonClick: PropTypes.func.isRequired,
 };
 
 export default SimilarFilms;

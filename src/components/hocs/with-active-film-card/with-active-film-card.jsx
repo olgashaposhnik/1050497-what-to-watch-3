@@ -11,7 +11,7 @@ const withActiveFilmCard = (Component) => {
       this.videoPlayerDelay = null;
 
       this.state = {
-        activeFilmCard: null,
+        activeFilmCard: props.activeFilmCard,
         isPlaying: false
       };
 
@@ -91,7 +91,8 @@ const withActiveFilmCard = (Component) => {
           ).isRequired
         }).isRequired
     ).isRequired,
-    onFilmCardClick: PropTypes.func.isRequired
+    onFilmCardClick: PropTypes.func.isRequired,
+    activeFilmCard: PropTypes.number,
   };
 
   return WithActiveFilmCard;
