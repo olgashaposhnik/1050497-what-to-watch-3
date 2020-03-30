@@ -40,7 +40,7 @@ class App extends PureComponent {
         films={films}
         onFilmCardClick={this.onFilmCardClickHandler}
         isVideoPlaying={isVideoPlaying}
-        onVideoPlayerClick={this.videoPlayerHandler}
+        onExitButtonClick={this.videoPlayerHandler}
       />;
     }
 
@@ -53,7 +53,7 @@ class App extends PureComponent {
         film={activeCard || films[0]}
         onFilmCardClick={this.onFilmCardClickHandler}
         isVideoPlaying={isVideoPlaying}
-        onVideoPlayerClick={this.videoPlayerHandler}
+        onExitButtonClick={this.videoPlayerHandler}
       />
     );
   }

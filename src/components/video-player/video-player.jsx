@@ -10,9 +10,9 @@ export default class VideoPlayer extends PureComponent {
 
     this.state = {
       isPlaying: false,
-      // isFullscreen: false, // меняла
-      duration: 0, // меняла
-      currentTime: 0 // меняла
+      // // isFullscreen: false, // меняла
+      // duration: 0, // меняла
+      // currentTime: 0 // меняла
     };
 
     this.videoPlayerHandler = this.videoPlayerHandler.bind(this);
@@ -38,18 +38,18 @@ export default class VideoPlayer extends PureComponent {
     // this.setState({isFullscreen: true}); // меняла
   } // меняла
 
-  calculateCurrentTime() { // меняла
-    const video = this._videoRef.current;
+  // calculateCurrentTime() { // меняла
+  //   const video = this._videoRef.current;
 
-    this.setState({currentTime: video.currentTime});
-  }
+  // this.setState({currentTime: video.currentTime});
+  // }
 
   getVideoProgress() {
-    return (this.state.currentTime / this.state.duration) * 100;
+    return (this._videoRef.current.currentTime / this._videoRef.current.duration) * 100;
   }
 
   getFormattedTime() {
-    return formatTime(this.state.duration - this.state.currentTime);
+    return formatTime(this._videoRef.current.duration - this._videoRef.current.currentTime);
   }
 
   componentDidMount() {
@@ -57,13 +57,13 @@ export default class VideoPlayer extends PureComponent {
     this._videoRef.current.onloadedmetadata = () => { // событие Событие loadedmetadata происходит при загрузке мета-данных для указанного аудио/видео. Мета-данные для аудио/видео состоят из: длительность, размеры (только видео) и текстовые дорожки.
       this.setState({
         isPlaying: this.props.autoPlay,
-        duration: this._videoRef.duration
+        duration: this._videoRef.current.duration
       });
     };
 
     this._videoRef.current.ontimeupdate = () => // Событие ontimeupdate наступает, когда позиция воспроизведения аудио / видео изменилась.
       this.setState({
-        currentTime: this._videoRef.currentTime
+        currentTime: this._videoRef.current.currentTime
       });
   }
 

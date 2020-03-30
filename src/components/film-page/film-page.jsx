@@ -10,14 +10,14 @@ import VideoPlayer from "../video-player/video-player.jsx";
 
 const MORE_LIKE_THIS_COUNT = 4;
 
-const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onVideoPlayerClick}) => {
+const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonClick}) => {
   const getSimilarFilms = () => {
     return (films.filter((item) => item.genre === film.genre)).slice(0, MORE_LIKE_THIS_COUNT);
   };
 
   return isVideoPlaying ? (
     <VideoPlayer
-      onExitButtonClick={onVideoPlayerClick}
+      onExitButtonClick={onExitButtonClick}
       film={film}
       autoPlay={false}
       muted={true}
@@ -64,7 +64,7 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onVideoPlayerCl
               <div className="movie-card__buttons">
                 <button
                   className="btn btn--play movie-card__button"
-                  type="button" onClick={onVideoPlayerClick}
+                  type="button" onClick={onExitButtonClick}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -241,7 +241,7 @@ FilmPage.propTypes = {
   ).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   isVideoPlaying: PropTypes.bool.isRequired,
-  onVideoPlayerClick: PropTypes.func.isRequired,
+  onExitButtonClick: PropTypes.func.isRequired,
 };
 
 export default FilmPage;
