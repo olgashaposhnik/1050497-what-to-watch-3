@@ -58,9 +58,12 @@ it(`Should render MovieCard component`, () => {
           onFilmCardMouseLeave = {() => {}}
           onExitButtonClick = {() => {}}
           isPlaying={true}
-        />
-    )
-    .toJSON();
+        >
+        </FilmCard>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

@@ -85,6 +85,7 @@ const withActiveFilmCard = (Component) => {
               PropTypes.shape({
                 rating: PropTypes.number.isRequired,
                 date: PropTypes.instanceOf(Date).isRequired,
+                // date: PropTypes.string.isRequired,
                 author: PropTypes.string.isRequired,
                 review: PropTypes.string.isRequired
               })

@@ -359,6 +359,8 @@ it(`Should render App`, () => {
     films
   });
 
+  const FILMS_SHOWED_BY_START = 8;
+
   const tree = renderer
     .create(
         <Provider store={store}>
@@ -367,10 +369,10 @@ it(`Should render App`, () => {
             genre={FilmData.GENRE}
             year={FilmData.YEAR}
             films={films}
+            filmsShowedByStart={FILMS_SHOWED_BY_START}
           />,
         </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
-

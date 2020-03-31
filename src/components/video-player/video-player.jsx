@@ -85,6 +85,7 @@ export default class VideoPlayer extends PureComponent {
           poster={film.image}
           width="100%"
           autoPlay={autoPlay}
+          controls={false}
           onClick={this.videoPlayerHandler}
           className="player__video"
         >
@@ -166,6 +167,7 @@ VideoPlayer.propTypes = {
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           rating: PropTypes.number.isRequired,
+          // date: PropTypes.string.isRequired,
           date: PropTypes.instanceOf(Date).isRequired,
           author: PropTypes.string.isRequired,
           review: PropTypes.string.isRequired

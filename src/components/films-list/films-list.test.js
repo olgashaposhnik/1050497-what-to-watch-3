@@ -353,6 +353,7 @@ it(`Should render FilmsList component`, () => {
       onFilmCardClick={() => {}}
       onFilmCardMouseOver={() => {}}
       onFilmCardMouseLeave={() => {}}
+      onExitButtonClick={() => {}}
       isPlaying
     />)
     .toJSON();

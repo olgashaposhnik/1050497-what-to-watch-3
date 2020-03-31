@@ -223,6 +223,8 @@ const films = [
   },
 ];
 
+const FILMS_SHOWED_BY_START = 8;
+
 it(`Should render GenresList component`, () => {
 
   const tree = renderer
@@ -233,7 +235,8 @@ it(`Should render GenresList component`, () => {
           changeGenre={() => {}}
           onFilmCardClick={() => {}}
           returnShowedFilmsToStart={() => {}}
-
+          onExitButtonClick = {() => {}}
+          filmsShowedByStart={FILMS_SHOWED_BY_START}
         />
     )
     .toJSON();

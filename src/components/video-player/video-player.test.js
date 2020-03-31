@@ -61,8 +61,14 @@ it(`Should render VideoPlayer component`, () => {
       getVideoProgress={() => {}}
       onPlayClick={() => {}}
       onFullScreenClick={() => {}}
-    />)
-    .toJSON();
+    >
+      <video />
+    </VideoPlayer>, {
+      createNodeMock: () => {
+        return {};
+      }
+    }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
+
