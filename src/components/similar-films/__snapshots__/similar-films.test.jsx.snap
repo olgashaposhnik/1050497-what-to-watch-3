@@ -193,32 +193,5 @@ exports[`Should render SimilarFilms component 1`] = `
       </a>
     </h3>
   </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Back to the Future"
-        height="175"
-        src="img/johnny-english.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="#"
-      >
-        Back to the Future
-      </a>
-    </h3>
-  </article>
 </div>
 `;

@@ -2,7 +2,7 @@ import React from "react";
 import FilmCard from "../film-card/film-card.jsx";
 import PropTypes from "prop-types";
 
-const FilmsList = ({films, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLeave, activeFilmCard, isPlaying}) => {
+const FilmsList = ({films, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLeave, activeFilmCard, isPlaying, onExitButtonClick}) => {
   return (
     <div className="catalog__movies-list">
       {films.map((film, index) => (
@@ -13,6 +13,7 @@ const FilmsList = ({films, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouse
           onFilmCardMouseOver={() => onFilmCardMouseOver(index)}
           onFilmCardMouseLeave={onFilmCardMouseLeave}
           isPlaying={activeFilmCard === index && isPlaying}
+          onExitButtonClick={onExitButtonClick}
         />
       ))}
     </div>
@@ -39,7 +40,8 @@ FilmsList.propTypes = {
   onFilmCardMouseOver: PropTypes.func.isRequired,
   onFilmCardMouseLeave: PropTypes.func.isRequired,
   activeFilmCard: PropTypes.number,
-  isPlaying: PropTypes.bool.isRequired
+  isPlaying: PropTypes.bool.isRequired,
+  onExitButtonClick: PropTypes.func.isRequired
 };
 
 export default FilmsList;

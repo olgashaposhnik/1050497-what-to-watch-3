@@ -6,15 +6,23 @@ import {getRatingTextValue} from "../../utils/utils.js";
 // import FilmsList from '../films-list/films-list.jsx';
 // import films from "../../mocks/films";
 import SimilarFilms from '../similar-films/similar-films.jsx';
+import VideoPlayer from "../video-player/video-player.jsx";
 
 const MORE_LIKE_THIS_COUNT = 4;
 
-const FilmPage = ({film, films, onFilmCardClick}) => {
+const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonClick}) => {
   const getSimilarFilms = () => {
     return (films.filter((item) => item.genre === film.genre)).slice(0, MORE_LIKE_THIS_COUNT);
   };
 
-  return (
+  return isVideoPlaying ? (
+    <VideoPlayer
+      onExitButtonClick={onExitButtonClick}
+      film={film}
+      autoPlay={false}
+      muted={true}
+    />
+  ) : (
     <Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
@@ -56,7 +64,7 @@ const FilmPage = ({film, films, onFilmCardClick}) => {
               <div className="movie-card__buttons">
                 <button
                   className="btn btn--play movie-card__button"
-                  type="button"
+                  type="button" onClick={onExitButtonClick}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -165,7 +173,9 @@ const FilmPage = ({film, films, onFilmCardClick}) => {
           <SimilarFilms
             film={film}
             films={getSimilarFilms(film, MORE_LIKE_THIS_COUNT)}
-            onFilmCardClick={onFilmCardClick}/>
+            onFilmCardClick={onFilmCardClick}
+            onExitButtonClick={onExitButtonClick}
+          />
         </section>
 
         <footer className="page-footer">
@@ -202,7 +212,8 @@ FilmPage.propTypes = {
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           rating: PropTypes.number.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired,
+          // date: PropTypes.instanceOf(Date).isRequired,
+          date: PropTypes.string.isRequired,
           author: PropTypes.string.isRequired,
           review: PropTypes.string.isRequired
         })
@@ -231,7 +242,9 @@ FilmPage.propTypes = {
         ).isRequired
       }).isRequired
   ).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired
+  onFilmCardClick: PropTypes.func.isRequired,
+  isVideoPlaying: PropTypes.bool.isRequired,
+  onExitButtonClick: PropTypes.func.isRequired,
 };
 
 export default FilmPage;

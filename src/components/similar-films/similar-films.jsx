@@ -12,11 +12,12 @@ const getSimilarFilms = (films, film) => {
   );
 };
 
-const SimilarFilms = ({films, film, onFilmCardClick}) => {
+const SimilarFilms = ({films, film, onFilmCardClick, onExitButtonClick}) => {
   return (
     <FilmsListWrapped
       films={getSimilarFilms(films, film)}
       onFilmCardClick={onFilmCardClick}
+      onExitButtonClick={onExitButtonClick}
     />
   );
 };
@@ -34,6 +35,15 @@ SimilarFilms.propTypes = {
     rating: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          rating: PropTypes.number.isRequired,
+          // date: PropTypes.instanceOf(Date).isRequired,
+          date: PropTypes.string.isRequired,
+          author: PropTypes.string.isRequired,
+          review: PropTypes.string.isRequired
+        })
+    ).isRequired
   }).isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape({
@@ -51,14 +61,16 @@ SimilarFilms.propTypes = {
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               rating: PropTypes.number.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired,
+              // date: PropTypes.instanceOf(Date).isRequired,
+              date: PropTypes.string.isRequired,
               author: PropTypes.string.isRequired,
               review: PropTypes.string.isRequired
             })
         ).isRequired
       }).isRequired
   ).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired
+  onFilmCardClick: PropTypes.func.isRequired,
+  onExitButtonClick: PropTypes.func.isRequired,
 };
 
 export default SimilarFilms;

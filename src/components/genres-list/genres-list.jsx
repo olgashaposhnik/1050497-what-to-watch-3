@@ -55,6 +55,8 @@ class GenresList extends PureComponent {
         <FilmsListWrapped
           films={this.getFilmsByGenre(genre, films)}
           onFilmCardClick={onFilmCardClick}
+          activeFilmCard={this.props.activeFilmCard}
+          onExitButtonClick={this.props.onExitButtonClick}
         />
       </>
     );
@@ -94,6 +96,7 @@ GenresList.propTypes = {
             PropTypes.shape({
               rating: PropTypes.number.isRequired,
               date: PropTypes.instanceOf(Date).isRequired,
+              // date: PropTypes.string.isRequired,
               author: PropTypes.string.isRequired,
               review: PropTypes.string.isRequired
             })
@@ -104,7 +107,9 @@ GenresList.propTypes = {
   changeGenre: PropTypes.func.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   filmsShowedByStart: PropTypes.number.isRequired,
-  returnShowedFilmsToStart: PropTypes.func.isRequired
+  returnShowedFilmsToStart: PropTypes.func.isRequired,
+  activeFilmCard: PropTypes.number,
+  onExitButtonClick: PropTypes.func.isRequired,
 };
 
 export {GenresList};

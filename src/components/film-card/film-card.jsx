@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 
-const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLeave, isPlaying}) => {
+const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLeave, isPlaying, onExitButtonClick}) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
@@ -21,7 +21,7 @@ const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLe
           />
         )}
         {isPlaying && (
-          <VideoPlayer film={film} muted={true} autoPlay={true} />
+          <VideoPlayer film={film} muted={true} autoPlay={true} onExitButtonClick={onExitButtonClick}/>
         )}
       </div>
       <h3 className="small-movie-card__title">
@@ -46,11 +46,21 @@ FilmCard.propTypes = {
     rating: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          rating: PropTypes.number.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired,
+          // date: PropTypes.string.isRequired,
+          author: PropTypes.string.isRequired,
+          review: PropTypes.string.isRequired
+        })
+    ).isRequired
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   onFilmCardMouseOver: PropTypes.func.isRequired,
-  onFilmCardMouseLeave: PropTypes.func.isRequired
+  onFilmCardMouseLeave: PropTypes.func.isRequired,
+  onExitButtonClick: PropTypes.func.isRequired,
 };
 
 export default FilmCard;

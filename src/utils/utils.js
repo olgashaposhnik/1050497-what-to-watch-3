@@ -23,4 +23,16 @@ const randomDate = (start, end) => {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };
 
-export {getRandomInteger, getRatingTextValue, extend, randomDate};
+const formatTime = (time) => {
+  const hours = Math.floor(time / 60 / 60);
+  const minutes = Math.floor(time / 60) - (hours * 60);
+  const seconds = time % 60;
+  const formatted = [
+    hours.toString().padStart(2, `0`),
+    minutes.toString().padStart(2, `0`),
+    seconds.toString().padStart(2, `0`)
+  ].join(`:`);
+  return formatted;
+};
+
+export {getRandomInteger, getRatingTextValue, extend, randomDate, formatTime};

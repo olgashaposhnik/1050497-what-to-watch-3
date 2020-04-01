@@ -370,7 +370,9 @@ it(`Should Main render correctly`, () => {
             genre={FilmData.GENRE}
             year={FilmData.YEAR}
             films={films}
+            film={films[0]}
             onFilmCardClick={() => {}}
+            onExitButtonClick = {() => {}}
           />
         </Provider>
     )
