@@ -22,6 +22,7 @@ class App extends PureComponent {
 
   onFilmCardClickHandler(activeCard) {
     this.setState({activeCard});
+    this.props.getComments(activeCard.id);
   }
 
   videoPlayerHandler() {
@@ -31,13 +32,14 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {name, genre, year, films} = this.props;
+    // const {name, genre, year, films} = this.props;
     const {activeCard, isVideoPlaying} = this.state;
 
     if (activeCard !== null) {
       return <FilmPage
-        film={this.props.films.find((film) => film.id === activeCard.id)}
-        films={films}
+        film={activeCard}
+        // film={this.props.films.find((film) => film.id === activeCard.id)}
+        // films={films}
         onFilmCardClick={this.onFilmCardClickHandler}
         isVideoPlaying={isVideoPlaying}
         onExitButtonClick={this.videoPlayerHandler}
@@ -46,12 +48,12 @@ class App extends PureComponent {
 
     return (
       <Main
-        name={name}
-        genre={genre}
-        year={year}
-        films={films}
+        // name={name}
+        // genre={genre}
+        // year={year}
+        // films={films}
         activeFilmCard={activeCard && activeCard.id || -1}
-        film={activeCard || films[0]}
+        // film={activeCard || films[0]}
         onFilmCardClick={this.onFilmCardClickHandler}
         isVideoPlaying={isVideoPlaying}
         onExitButtonClick={this.videoPlayerHandler}
@@ -94,34 +96,36 @@ const mapStateToProps = (state) => ({
 // });
 
 App.propTypes = {
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        fullImage: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        duration: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        year: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        ratingCount: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              rating: PropTypes.number.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired,
-              // date: PropTypes.string.isRequired,
-              author: PropTypes.string.isRequired,
-              review: PropTypes.string.isRequired
-            })
-        ).isRequired
-      }).isRequired
-  ).isRequired,
+  getComments: PropTypes.func.isRequired
 };
+//   name: PropTypes.string.isRequired,
+//   genre: PropTypes.string.isRequired,
+//   year: PropTypes.number.isRequired,
+//   films: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         title: PropTypes.string.isRequired,
+//         image: PropTypes.string.isRequired,
+//         fullImage: PropTypes.string.isRequired,
+//         director: PropTypes.string.isRequired,
+//         starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+//         duration: PropTypes.string.isRequired,
+//         genre: PropTypes.string.isRequired,
+//         year: PropTypes.number.isRequired,
+//         rating: PropTypes.number.isRequired,
+//         ratingCount: PropTypes.number.isRequired,
+//         description: PropTypes.string.isRequired,
+//         reviews: PropTypes.arrayOf(
+//             PropTypes.shape({
+//               rating: PropTypes.number.isRequired,
+//               date: PropTypes.instanceOf(Date).isRequired,
+//               // date: PropTypes.string.isRequired,
+//               author: PropTypes.string.isRequired,
+//               review: PropTypes.string.isRequired
+//             })
+//         ).isRequired
+//       }).isRequired
+//   ).isRequired,
+// };
 
 export {App};
 export default connect(mapStateToProps)(App);

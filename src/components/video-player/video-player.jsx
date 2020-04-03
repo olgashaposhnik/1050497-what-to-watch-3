@@ -152,26 +152,26 @@ VideoPlayer.propTypes = {
   autoPlay: PropTypes.bool.isRequired,
   onExitButtonClick: PropTypes.func.isRequired,
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    fullImage: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    duration: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    preview: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    image: PropTypes.string,
+    fullImage: PropTypes.string,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    duration: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    rating: PropTypes.number,
+    ratingCount: PropTypes.number,
+    description: PropTypes.string,
+    preview: PropTypes.string,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
-          rating: PropTypes.number.isRequired,
+          rating: PropTypes.number,
+          date: PropTypes.instanceOf(Date),
           // date: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired,
-          author: PropTypes.string.isRequired,
-          review: PropTypes.string.isRequired
+          author: PropTypes.string,
+          review: PropTypes.string
         })
-    ).isRequired
-  }).isRequired
+    )
+  }),
 };

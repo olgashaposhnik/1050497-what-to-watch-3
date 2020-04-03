@@ -23,19 +23,19 @@ const FilmsList = ({films, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouse
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        fullImage: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        duration: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        year: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        ratingCount: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-      }).isRequired
-  ).isRequired,
+        title: PropTypes.string,
+        image: PropTypes.string,
+        fullImage: PropTypes.string,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        duration: PropTypes.string,
+        genre: PropTypes.string,
+        year: PropTypes.number,
+        rating: PropTypes.number,
+        ratingCount: PropTypes.number,
+        description: PropTypes.string,
+      })
+  ),
   onFilmCardClick: PropTypes.func.isRequired,
   onFilmCardMouseOver: PropTypes.func.isRequired,
   onFilmCardMouseLeave: PropTypes.func.isRequired,

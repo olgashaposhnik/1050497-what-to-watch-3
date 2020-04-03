@@ -4,13 +4,15 @@ import PropTypes from "prop-types";
 import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import VideoPlayer from "../video-player/video-player.jsx";
+import {connect} from "react-redux";
+import {getMainFilm} from "../../reducer/data/selectors.js";
 
 const Main = (props) => {
-  const {name, genre, year, onFilmCardClick, isVideoPlaying, onExitButtonClick, film} = props;
+  const {onFilmCardClick, isVideoPlaying, onExitButtonClick, mainFilm} = props;
   return isVideoPlaying ? (
     <VideoPlayer
       onExitButtonClick={onExitButtonClick}
-      film={film}
+      film={mainFilm}
       autoPlay={false}
       muted={true}
     />
@@ -43,7 +45,7 @@ const Main = (props) => {
       </div>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={mainFilm.fullImage} alt={mainFilm.title} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <header className="page-header movie-card__head">
@@ -63,13 +65,13 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width={218} height={327} />
+              <img src={mainFilm.fullImage} alt={mainFilm.title} width={218} height={327} />
             </div>
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{name}</h2>
+              <h2 className="movie-card__title">{mainFilm.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{year}</span>
+                <span className="movie-card__genre">{mainFilm.genre}</span>
+                <span className="movie-card__year">{mainFilm.year}</span>
               </p>
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button" onClick={onExitButtonClick}>
@@ -115,47 +117,51 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
+  // name: PropTypes.string.isRequired,
+  // genre: PropTypes.string.isRequired,
+  // year: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        fullImage: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        duration: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        year: PropTypes.number.isRequired,
-      }).isRequired
-  ).isRequired,
+        title: PropTypes.string,
+        image: PropTypes.string,
+        fullImage: PropTypes.string,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        duration: PropTypes.string,
+        genre: PropTypes.string,
+        year: PropTypes.number,
+      })
+  ),
   onFilmCardClick: PropTypes.func.isRequired,
   isVideoPlaying: PropTypes.bool.isRequired,
   onExitButtonClick: PropTypes.func.isRequired,
   activeFilmCard: PropTypes.number,
-  film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    fullImage: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    duration: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
+  mainFilm: PropTypes.shape({
+    title: PropTypes.string,
+    image: PropTypes.string,
+    fullImage: PropTypes.string,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    duration: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    rating: PropTypes.number,
+    ratingCount: PropTypes.number,
+    description: PropTypes.string,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
-          rating: PropTypes.number.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired,
+          rating: PropTypes.number,
+          date: PropTypes.instanceOf(Date),
           // date: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-          review: PropTypes.string.isRequired
+          author: PropTypes.string,
+          review: PropTypes.string
         })
-    ).isRequired
-  }).isRequired,
+    )
+  }),
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  mainFilm: getMainFilm(state)
+});
+
+export default connect(mapStateToProps)(Main);

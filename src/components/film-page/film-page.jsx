@@ -7,10 +7,12 @@ import {getRatingTextValue} from "../../utils/utils.js";
 // import films from "../../mocks/films";
 import SimilarFilms from '../similar-films/similar-films.jsx';
 import VideoPlayer from "../video-player/video-player.jsx";
+import {connect} from "react-redux";
+import {getFilms} from "../../reducer/data/selectors.js";
 
 const MORE_LIKE_THIS_COUNT = 4;
 
-const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonClick}) => {
+const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExitButtonClick}) => {
   const getSimilarFilms = () => {
     return (films.filter((item) => item.genre === film.genre)).slice(0, MORE_LIKE_THIS_COUNT);
   };
@@ -147,13 +149,13 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
               <Tab name="Reviews">
                 <div className="movie-card__reviews movie-card__row">
                   <div className="movie-card__reviews-col">
-                    {film.reviews.map((review) => (
+                    {comments.map((review) => (
                       <div className="review" key={review.id}>
                         <blockquote className="review__quote">
-                          <p className="review__text">{review.review}</p>
+                          <p className="review__text">{review.comment}</p>
                           <footer className="review__details">
-                            <cite className="review__author">{review.author}</cite>
-                            <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
+                            <cite className="review__author">{review.user.name}</cite>
+                            <time className="review__date" dateTime={review.date}>{review.date}</time>
                           </footer>
                         </blockquote>
                         <div className="review__rating">{review.rating}</div>
@@ -198,53 +200,66 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
 
 FilmPage.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    fullImage: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    duration: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    image: PropTypes.string,
+    fullImage: PropTypes.string,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    duration: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    rating: PropTypes.number,
+    ratingCount: PropTypes.number,
+    description: PropTypes.string,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
-          rating: PropTypes.number.isRequired,
-          // date: PropTypes.instanceOf(Date).isRequired,
-          date: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-          review: PropTypes.string.isRequired
+          rating: PropTypes.number,
+          date: PropTypes.instanceOf(Date),
+          // date: PropTypes.string.isRequired,
+          author: PropTypes.string,
+          review: PropTypes.string
         })
-    ).isRequired
-  }).isRequired,
+    )
+  }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        fullImage: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        duration: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        year: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        ratingCount: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        image: PropTypes.string,
+        fullImage: PropTypes.string,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        duration: PropTypes.string,
+        genre: PropTypes.string,
+        year: PropTypes.number,
+        rating: PropTypes.number,
+        ratingCount: PropTypes.number,
+        description: PropTypes.string,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
-              rating: PropTypes.number.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired,
-              author: PropTypes.string.isRequired,
-              review: PropTypes.string.isRequired
+              rating: PropTypes.number,
+              date: PropTypes.instanceOf(Date),
+              // date: PropTypes.string.isRequired,
+              author: PropTypes.string,
+              review: PropTypes.string
             })
-        ).isRequired
-      }).isRequired
-  ).isRequired,
+        )
+      })
+  ),
   onFilmCardClick: PropTypes.func.isRequired,
   isVideoPlaying: PropTypes.bool.isRequired,
   onExitButtonClick: PropTypes.func.isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape({
+        rating: PropTypes.number.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired,
+        author: PropTypes.string.isRequired,
+        review: PropTypes.string.isRequired
+      })
+  ).isRequired
 };
 
-export default FilmPage;
+const mapStateToProps = (state) => ({
+  films: getFilms(state)
+});
+
+export default connect(mapStateToProps)(FilmPage);
