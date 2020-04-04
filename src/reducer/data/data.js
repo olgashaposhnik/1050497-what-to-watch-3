@@ -23,9 +23,9 @@ const Operation = {
       dispatch(ActionCreator.getMainFilm(response.data));
     });
   },
-  getFilmComments: (activeCard) => (dispatch, getState, api) => {
+  getComments: (activeCard) => (dispatch, getState, api) => {
     return api.get(`/comments/${activeCard}`).then((response) => {
-      dispatch(ActionCreator.getFilmComments(response.data));
+      dispatch(ActionCreator.getComments(response.data));
     });
   }
 };
@@ -39,7 +39,7 @@ const ActionCreator = {
     type: ActionType.GET_MAIN_FILM,
     payload: film
   }),
-  getFilmComments: (comments) => ({
+  getComments: (comments) => ({
     type: ActionType.GET_FILM_COMMENTS,
     payload: comments
   })

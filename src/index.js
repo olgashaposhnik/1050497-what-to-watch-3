@@ -8,6 +8,7 @@ import App from "./components/app/app.jsx";
 // import films from "./mocks/films";
 import reducer from "./reducer/reducer.js";
 import {Operation as DataOperation} from "./reducer/data/data.js";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 // const FilmData = {
 //   NAME: `The Grand Budapest Hotel`,
@@ -19,7 +20,7 @@ const api = createAPI();
 
 const store = createStore(
     reducer,
-    applyMiddleware(thunk.withExtraArgument(api))
+    composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
 
 store.dispatch(DataOperation.getFilms());

@@ -43,6 +43,7 @@ class App extends PureComponent {
         onFilmCardClick={this.onFilmCardClickHandler}
         isVideoPlaying={isVideoPlaying}
         onExitButtonClick={this.videoPlayerHandler}
+        comments={this.comments}
       />;
     }
 

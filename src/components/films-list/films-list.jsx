@@ -7,7 +7,7 @@ const FilmsList = ({films, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouse
     <div className="catalog__movies-list">
       {films.map((film, index) => (
         <FilmCard
-          key={film.title + index}
+          key={film.id + index}
           film={film}
           onFilmCardClick={() => onFilmCardClick(film)}
           onFilmCardMouseOver={() => onFilmCardMouseOver(index)}

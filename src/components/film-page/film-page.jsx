@@ -9,6 +9,7 @@ import SimilarFilms from '../similar-films/similar-films.jsx';
 import VideoPlayer from "../video-player/video-player.jsx";
 import {connect} from "react-redux";
 import {getFilms} from "../../reducer/data/selectors.js";
+import {getComments} from "../../reducer/data/selectors.js";
 
 const MORE_LIKE_THIS_COUNT = 4;
 
@@ -250,16 +251,21 @@ FilmPage.propTypes = {
   onExitButtonClick: PropTypes.func.isRequired,
   comments: PropTypes.arrayOf(
       PropTypes.shape({
-        rating: PropTypes.number.isRequired,
-        date: PropTypes.instanceOf(Date).isRequired,
-        author: PropTypes.string.isRequired,
-        review: PropTypes.string.isRequired
+        comment: PropTypes.string,
+        date: PropTypes.string,
+        id: PropTypes.number,
+        rating: PropTypes.number,
+        user: PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string
+        })
       })
-  ).isRequired
+  )
 };
 
 const mapStateToProps = (state) => ({
-  films: getFilms(state)
+  films: getFilms(state),
+  comments: getComments(state)
 });
 
 export default connect(mapStateToProps)(FilmPage);
