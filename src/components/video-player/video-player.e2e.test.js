@@ -59,8 +59,8 @@ it(`VideoPlayer should have two states: Play, Pause`, () => {
         film={film}
         muted={true}
         autoPlay={false}
-        poster={film.image}
-        video={film.preview}
+        poster={film.poster_image}
+        video={film.preview_video_link}
         onExitButtonClick={() => {}} />
   );
 

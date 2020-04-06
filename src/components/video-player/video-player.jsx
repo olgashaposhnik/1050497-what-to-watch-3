@@ -82,14 +82,14 @@ export default class VideoPlayer extends PureComponent {
         <video
           ref={this._videoRef}
           muted={muted}
-          poster={film.image}
+          poster={film.poster_image}
           width="100%"
           autoPlay={autoPlay}
           controls={false}
           onClick={this.videoPlayerHandler}
           className="player__video"
         >
-          <source src={film.preview} />
+          <source src={film.preview_video_link} />
         </video>
 
         <button type="button" className="player__exit" onClick={onExitButtonClick}>
@@ -128,7 +128,7 @@ export default class VideoPlayer extends PureComponent {
               </>
               )}
             </button>
-            <div className="player__name">{film.title}</div>
+            <div className="player__name">{film.name}</div>
 
             <button
               type="button"

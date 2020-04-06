@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 
 const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLeave, isPlaying, onExitButtonClick}) => {
+  console.log(film)
   return (
     <article
       className="small-movie-card catalog__movies-card"
@@ -14,8 +15,8 @@ const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLe
       <div className="small-movie-card__image">
         {!isPlaying && (
           <img
-            src={film.image}
-            alt={film.title}
+            src={film.poster_image}
+            alt={film.name}
             width="280"
             height="175"
           />
@@ -26,7 +27,7 @@ const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLe
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="#">
-          {film.title}
+          {film.name}
         </a>
       </h3>
     </article>

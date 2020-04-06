@@ -9,6 +9,7 @@ import {getMainFilm} from "../../reducer/data/selectors.js";
 
 const Main = (props) => {
   const {onFilmCardClick, isVideoPlaying, onExitButtonClick, mainFilm} = props;
+  console.log(mainFilm)
   return isVideoPlaying ? (
     <VideoPlayer
       onExitButtonClick={onExitButtonClick}

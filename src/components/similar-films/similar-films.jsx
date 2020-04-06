@@ -8,7 +8,7 @@ const FilmsListWrapped = withActiveFilmCard(FilmsList);
 const getSimilarFilms = (films, film) => {
   return films.filter(
       (similarFilm) =>
-        similarFilm.genre === film.genre && similarFilm.title !== film.title
+        similarFilm.genre === film.genre && similarFilm.title !== film.name
   );
 };
 

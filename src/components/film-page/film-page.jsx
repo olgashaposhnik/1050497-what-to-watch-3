@@ -30,7 +30,7 @@ const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExi
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={film.fullImage} alt={film.title} />
+            <img src={film.background_image} alt={film.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -58,10 +58,10 @@ const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExi
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{film.title}</h2>
+              <h2 className="movie-card__title">{film.name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{film.genre}</span>
-                <span className="movie-card__year">{film.year}</span>
+                <span className="movie-card__year">{film.released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -95,8 +95,8 @@ const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExi
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
               <img
-                src={film.image}
-                alt={film.title}
+                src={film.preview_image}
+                alt={film.name}
                 width="218"
                 height="327"
               />
@@ -108,7 +108,7 @@ const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExi
                   <div className="movie-rating__score">{film.rating}</div>
                   <p className="movie-rating__meta">
                     <span className="movie-rating__level">{getRatingTextValue(film.rating)}</span>
-                    <span className="movie-rating__count">{film.ratingCount} ratings</span>
+                    <span className="movie-rating__count">{film.scores_count} ratings</span>
                   </p>
                 </div>
                 <div className="movie-card__text">
@@ -134,7 +134,7 @@ const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExi
                   <div className="movie-card__text-col">
                     <p className="movie-card__details-item">
                       <strong className="movie-card__details-name">Run Time</strong>
-                      <span className="movie-card__details-value">{film.duration}</span>
+                      <span className="movie-card__details-value">{film.run_time}</span>
                     </p>
                     <p className="movie-card__details-item">
                       <strong className="movie-card__details-name">Genre</strong>
@@ -142,7 +142,7 @@ const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExi
                     </p>
                     <p className="movie-card__details-item">
                       <strong className="movie-card__details-name">Released</strong>
-                      <span className="movie-card__details-value">{film.year}</span>
+                      <span className="movie-card__details-value">{film.released}</span>
                     </p>
                   </div>
                 </div>
