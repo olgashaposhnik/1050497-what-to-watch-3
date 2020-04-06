@@ -236,6 +236,7 @@ it(`Should call handler on genre link click`, () => {
   const genresList = mount(
       <GenresList
         films={films}
+        filteredFilms={films}
         genre={ALL_GENRES}
         changeGenre={changeGenreHandler}
         onFilmCardClick={filmCardClickHandler}

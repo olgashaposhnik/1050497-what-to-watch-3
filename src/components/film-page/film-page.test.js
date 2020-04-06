@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import FilmPage from "./film-page.jsx";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
 
 const film = {
   image: `img/what-we-do-in-the-shadows.jpg`,
@@ -383,13 +385,33 @@ const films = [
   },
 ];
 
+const FILMS_SHOWED_BY_START = 8;
+
+const ALL_GENRES = `All genres`;
+
 it(`Should render FilmPage component`, () => {
+  const mockStore = configureStore([]);
+
+  const store = mockStore({
+    DATA: {
+      films,
+      mainFilm: films[0]
+    },
+    STATE: {
+      genre: ALL_GENRES,
+      showedMovies: FILMS_SHOWED_BY_START
+    }
+  });
+
   const tree = renderer.create(
-      <FilmPage film={film}
-        films={films}
-        onFilmCardClick={() => {}}
-      />
+      <Provider store={store}>
+        <FilmPage film={films[0]}
+          films={films}
+          onFilmCardClick={() => {}}
+        />
+      </Provider>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
+

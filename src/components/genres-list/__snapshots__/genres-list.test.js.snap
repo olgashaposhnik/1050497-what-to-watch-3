@@ -39,9 +39,7 @@ Array [
         className="small-movie-card__image"
       >
         <img
-          alt="What We Do in the Shadows"
           height="175"
-          src="img/what-we-do-in-the-shadows.jpg"
           width="280"
         />
       </div>
@@ -51,9 +49,7 @@ Array [
         <a
           className="small-movie-card__link"
           href="#"
-        >
-          What We Do in the Shadows
-        </a>
+        />
       </h3>
     </article>
     <article
@@ -66,9 +62,7 @@ Array [
         className="small-movie-card__image"
       >
         <img
-          alt="What We Do in the Shadows"
           height="175"
-          src="img/what-we-do-in-the-shadows.jpg"
           width="280"
         />
       </div>
@@ -78,9 +72,7 @@ Array [
         <a
           className="small-movie-card__link"
           href="#"
-        >
-          What We Do in the Shadows
-        </a>
+        />
       </h3>
     </article>
     <article
@@ -93,9 +85,7 @@ Array [
         className="small-movie-card__image"
       >
         <img
-          alt="What We Do in the Shadows"
           height="175"
-          src="img/what-we-do-in-the-shadows.jpg"
           width="280"
         />
       </div>
@@ -105,9 +95,7 @@ Array [
         <a
           className="small-movie-card__link"
           href="#"
-        >
-          What We Do in the Shadows
-        </a>
+        />
       </h3>
     </article>
     <article
@@ -120,9 +108,7 @@ Array [
         className="small-movie-card__image"
       >
         <img
-          alt="What We Do in the Shadows"
           height="175"
-          src="img/what-we-do-in-the-shadows.jpg"
           width="280"
         />
       </div>
@@ -132,9 +118,7 @@ Array [
         <a
           className="small-movie-card__link"
           href="#"
-        >
-          What We Do in the Shadows
-        </a>
+        />
       </h3>
     </article>
     <article
@@ -147,9 +131,7 @@ Array [
         className="small-movie-card__image"
       >
         <img
-          alt="What We Do in the Shadows"
           height="175"
-          src="img/what-we-do-in-the-shadows.jpg"
           width="280"
         />
       </div>
@@ -159,9 +141,7 @@ Array [
         <a
           className="small-movie-card__link"
           href="#"
-        >
-          What We Do in the Shadows
-        </a>
+        />
       </h3>
     </article>
     <article
@@ -174,9 +154,7 @@ Array [
         className="small-movie-card__image"
       >
         <img
-          alt="What We Do in the Shadows"
           height="175"
-          src="img/what-we-do-in-the-shadows.jpg"
           width="280"
         />
       </div>
@@ -186,9 +164,7 @@ Array [
         <a
           className="small-movie-card__link"
           href="#"
-        >
-          What We Do in the Shadows
-        </a>
+        />
       </h3>
     </article>
   </div>,

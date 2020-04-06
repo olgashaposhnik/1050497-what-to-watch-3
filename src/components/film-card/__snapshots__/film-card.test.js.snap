@@ -19,12 +19,9 @@ exports[`Should render MovieCard component 1`] = `
         controls={false}
         muted={true}
         onClick={[Function]}
-        poster="img/johnny-english.jpg"
         width="100%"
       >
-        <source
-          src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-        />
+        <source />
       </video>
       <button
         className="player__exit"
@@ -87,9 +84,7 @@ exports[`Should render MovieCard component 1`] = `
           </button>
           <div
             className="player__name"
-          >
-            Back to the Future
-          </div>
+          />
           <button
             className="player__full-screen"
             onClick={[Function]}
@@ -118,9 +113,7 @@ exports[`Should render MovieCard component 1`] = `
     <a
       className="small-movie-card__link"
       href="#"
-    >
-      Back to the Future
-    </a>
+    />
   </h3>
 </article>
 `;

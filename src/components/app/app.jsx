@@ -55,6 +55,7 @@ class App extends PureComponent {
         // films={films}
         activeFilmCard={activeCard && activeCard.id || -1}
         // film={activeCard || films[0]}
+        // film={activeCard || films[0]}
         onFilmCardClick={this.onFilmCardClickHandler}
         isVideoPlaying={isVideoPlaying}
         onExitButtonClick={this.videoPlayerHandler}

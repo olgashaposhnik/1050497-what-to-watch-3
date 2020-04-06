@@ -201,18 +201,20 @@ const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExi
 
 FilmPage.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string,
-    image: PropTypes.string,
-    fullImage: PropTypes.string,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    duration: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    rating: PropTypes.number,
-    ratingCount: PropTypes.number,
-    description: PropTypes.string,
-    reviews: PropTypes.arrayOf(
+    'name': PropTypes.string,
+    'image': PropTypes.string,
+    'poster_image': PropTypes.string,
+    'preview_image': PropTypes.string,
+    'background_image': PropTypes.string,
+    'director': PropTypes.string,
+    'starring': PropTypes.arrayOf(PropTypes.string),
+    'run_time': PropTypes.string,
+    'genre': PropTypes.string,
+    'released': PropTypes.number,
+    'rating': PropTypes.number,
+    'scores_count': PropTypes.number,
+    'description': PropTypes.string,
+    'reviews': PropTypes.arrayOf(
         PropTypes.shape({
           rating: PropTypes.number,
           date: PropTypes.instanceOf(Date),
@@ -224,14 +226,14 @@ FilmPage.propTypes = {
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string,
+        name: PropTypes.string,
         image: PropTypes.string,
         fullImage: PropTypes.string,
         director: PropTypes.string,
         starring: PropTypes.arrayOf(PropTypes.string),
         duration: PropTypes.string,
         genre: PropTypes.string,
-        year: PropTypes.number,
+        released: PropTypes.number,
         rating: PropTypes.number,
         ratingCount: PropTypes.number,
         description: PropTypes.string,

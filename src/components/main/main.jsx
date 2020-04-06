@@ -9,7 +9,6 @@ import {getMainFilm} from "../../reducer/data/selectors.js";
 
 const Main = (props) => {
   const {onFilmCardClick, isVideoPlaying, onExitButtonClick, mainFilm} = props;
-  console.log(mainFilm)
   return isVideoPlaying ? (
     <VideoPlayer
       onExitButtonClick={onExitButtonClick}
@@ -46,7 +45,7 @@ const Main = (props) => {
       </div>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={mainFilm.fullImage} alt={mainFilm.title} />
+          <img src={mainFilm.background_image} alt={mainFilm.name} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <header className="page-header movie-card__head">
@@ -66,13 +65,13 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={mainFilm.fullImage} alt={mainFilm.title} width={218} height={327} />
+              <img src={mainFilm.poster_image} alt={mainFilm.name} width={218} height={327} />
             </div>
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{mainFilm.title}</h2>
+              <h2 className="movie-card__title">{mainFilm.released}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{mainFilm.genre}</span>
-                <span className="movie-card__year">{mainFilm.year}</span>
+                <span className="movie-card__year">{mainFilm.released}</span>
               </p>
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button" onClick={onExitButtonClick}>
@@ -123,14 +122,14 @@ Main.propTypes = {
   // year: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string,
+        name: PropTypes.string,
         image: PropTypes.string,
         fullImage: PropTypes.string,
         director: PropTypes.string,
         starring: PropTypes.arrayOf(PropTypes.string),
         duration: PropTypes.string,
         genre: PropTypes.string,
-        year: PropTypes.number,
+        released: PropTypes.number,
       })
   ),
   onFilmCardClick: PropTypes.func.isRequired,
@@ -138,18 +137,20 @@ Main.propTypes = {
   onExitButtonClick: PropTypes.func.isRequired,
   activeFilmCard: PropTypes.number,
   mainFilm: PropTypes.shape({
-    title: PropTypes.string,
-    image: PropTypes.string,
-    fullImage: PropTypes.string,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    duration: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    rating: PropTypes.number,
-    ratingCount: PropTypes.number,
-    description: PropTypes.string,
-    reviews: PropTypes.arrayOf(
+    'name': PropTypes.string,
+    'image': PropTypes.string,
+    'poster_image': PropTypes.string,
+    'preview_image': PropTypes.string,
+    'background_image': PropTypes.string,
+    'director': PropTypes.string,
+    'starring': PropTypes.arrayOf(PropTypes.string),
+    'run_time': PropTypes.string,
+    'genre': PropTypes.string,
+    'released': PropTypes.number,
+    'rating': PropTypes.number,
+    'scores_count': PropTypes.number,
+    'description': PropTypes.string,
+    'reviews': PropTypes.arrayOf(
         PropTypes.shape({
           rating: PropTypes.number,
           date: PropTypes.instanceOf(Date),

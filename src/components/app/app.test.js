@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import {App} from "./app.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {FilmData} from "../tests-mock/tests-mock.js";
+// import {FilmData} from "../tests-mock/tests-mock.js";
 
 const mockStore = configureStore([]);
 
@@ -353,24 +353,33 @@ const films = [
   },
 ];
 
+const FILMS_SHOWED_BY_START = 8;
+
 it(`Should render App`, () => {
   const store = mockStore({
-    genre: ALL_GENRES,
-    films
+    // genre: ALL_GENRES,
+    // films
+    DATA: {
+      films,
+      mainFilm: films[0]
+    },
+    STATE: {
+      genre: ALL_GENRES,
+      showedMovies: FILMS_SHOWED_BY_START
+    }
   });
-
-  const FILMS_SHOWED_BY_START = 8;
 
   const tree = renderer
     .create(
         <Provider store={store}>
-          <App
+          {/* <App
             name={FilmData.NAME}
             genre={FilmData.GENRE}
             year={FilmData.YEAR}
             films={films}
             filmsShowedByStart={FILMS_SHOWED_BY_START}
-          />,
+          />, */}
+          <App getComments={() => {}} />
         </Provider>)
     .toJSON();
 

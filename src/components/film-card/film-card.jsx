@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 
 const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLeave, isPlaying, onExitButtonClick}) => {
-  console.log(film)
   return (
     <article
       className="small-movie-card catalog__movies-card"
@@ -36,18 +35,19 @@ const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLe
 
 FilmCard.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string,
-    image: PropTypes.string,
-    fullImage: PropTypes.string,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    duration: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    rating: PropTypes.number,
-    ratingCount: PropTypes.number,
-    description: PropTypes.string,
-    reviews: PropTypes.arrayOf(
+    'name': PropTypes.string,
+    'image': PropTypes.string,
+    'poster_image': PropTypes.string,
+    'fullImage': PropTypes.string,
+    'director': PropTypes.string,
+    'starring': PropTypes.arrayOf(PropTypes.string),
+    'duration': PropTypes.string,
+    'genre': PropTypes.string,
+    'year': PropTypes.number,
+    'rating': PropTypes.number,
+    'ratingCount': PropTypes.number,
+    'description': PropTypes.string,
+    'reviews': PropTypes.arrayOf(
         PropTypes.shape({
           rating: PropTypes.number,
           date: PropTypes.instanceOf(Date),
