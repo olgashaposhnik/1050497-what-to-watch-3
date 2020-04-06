@@ -208,7 +208,7 @@ FilmPage.propTypes = {
     'background_image': PropTypes.string,
     'director': PropTypes.string,
     'starring': PropTypes.arrayOf(PropTypes.string),
-    'run_time': PropTypes.string,
+    'run_time': PropTypes.number,
     'genre': PropTypes.string,
     'released': PropTypes.number,
     'rating': PropTypes.number,
