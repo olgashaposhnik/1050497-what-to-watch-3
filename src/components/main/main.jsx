@@ -6,9 +6,11 @@ import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import VideoPlayer from "../video-player/video-player.jsx";
 import {connect} from "react-redux";
 import {getMainFilm} from "../../reducer/data/selectors.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const Main = (props) => {
-  const {onFilmCardClick, isVideoPlaying, onExitButtonClick, mainFilm} = props;
+  const {onFilmCardClick, isVideoPlaying, onExitButtonClick, mainFilm, authorizationStatus} = props;
   return isVideoPlaying ? (
     <VideoPlayer
       onExitButtonClick={onExitButtonClick}
@@ -57,9 +59,15 @@ const Main = (props) => {
             </a>
           </div>
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width={63} height={63} />
-            </div>
+            {authorizationStatus === AuthorizationStatus.AUTH ? (
+              <div className="user-block__avatar">
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+              </div>
+            ) : (
+              <a href="#" className="user-block__link">
+                Sign in
+              </a>
+            )}
           </div>
         </header>
         <div className="movie-card__wrap">
@@ -160,10 +168,12 @@ Main.propTypes = {
         })
     )
   }),
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  mainFilm: getMainFilm(state)
+  mainFilm: getMainFilm(state),
+  authorizationStatus: getAuthorizationStatus(state)
 });
 
 export default connect(mapStateToProps)(Main);

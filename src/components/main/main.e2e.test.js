@@ -5,6 +5,7 @@ import Main from "./main";
 // import {FilmData} from "../tests-mock/tests-mock.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const mockStore = configureStore([]);
 
@@ -369,6 +370,9 @@ it(`Should film card be pressed`, () => {
     STATE: {
       genre: ALL_GENRES,
       showedMovies: FILMS_SHOWED_BY_START
+    },
+    USER: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH
     }
   });
 
@@ -382,12 +386,9 @@ it(`Should film card be pressed`, () => {
   const main = mount(
       <Provider store={store}>
         <Main
-          // name={FilmData.NAME}
-          // genre={FilmData.GENRE}
-          // year={FilmData.YEAR}
-          // films={films}
           onFilmCardClick={onFilmCardClick}
           mainFilm={films[0]}
+          authorizationStatus={AuthorizationStatus.NO_AUTH}
         />
       </Provider>
   );

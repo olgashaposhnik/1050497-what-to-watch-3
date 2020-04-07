@@ -167,8 +167,8 @@ VideoPlayer.propTypes = {
     'reviews': PropTypes.arrayOf(
         PropTypes.shape({
           rating: PropTypes.number,
-          date: PropTypes.instanceOf(Date),
-          // date: PropTypes.string.isRequired,
+          // date: PropTypes.instanceOf(Date),
+          date: PropTypes.string.isRequired,
           author: PropTypes.string,
           review: PropTypes.string
         })

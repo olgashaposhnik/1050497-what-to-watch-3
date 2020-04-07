@@ -6,6 +6,10 @@ import {connect} from "react-redux";
 // import {ActionCreator} from "../../reducer.js";
 import FilmPage from "../film-page/film-page.jsx";
 // import VideoPlayer from "../video-player/video-player.jsx"; // пока убрала
+import SignIn from "../sign-in/sign-in.jsx";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 class App extends PureComponent {
   constructor(props) {
@@ -64,26 +68,21 @@ class App extends PureComponent {
   }
 
   render() {
+    const {login, authorizationStatus} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          <Route exact path="//dev-film-page">
-            {/* <FilmPage
-              film={this.props.films[this.state.activeCard || 0]}
-              onFilmCardClick={this.onFilmCardClickHandler}
-            /> */}
+          <Route exact path="/sign-in">
+            {authorizationStatus === AuthorizationStatus.NO_AUTH ? (
+              <SignIn onSubmit={login} />
+            ) : (
+              this._renderApp()
+            )}
           </Route>
-          {/* <Route exact path="/dev-video-player">
-            <VideoPlayer
-              autoPlay={false}
-              muted={true}
-              // film={this.state.activeCard} // проверить
-              // film={this.props.films.find((film) => film.id === this.state.activeCard.id)}
-            />
-          </Route> */}
         </Switch>
       </BrowserRouter>
     );
@@ -91,43 +90,19 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  activeCard: state.activeCard
+  authorizationStatus: getAuthorizationStatus(state)
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-// });
+const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  }
+});
 
 App.propTypes = {
-  getComments: PropTypes.func.isRequired
+  getComments: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
-//   name: PropTypes.string.isRequired,
-//   genre: PropTypes.string.isRequired,
-//   year: PropTypes.number.isRequired,
-//   films: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         title: PropTypes.string.isRequired,
-//         image: PropTypes.string.isRequired,
-//         fullImage: PropTypes.string.isRequired,
-//         director: PropTypes.string.isRequired,
-//         starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-//         duration: PropTypes.string.isRequired,
-//         genre: PropTypes.string.isRequired,
-//         year: PropTypes.number.isRequired,
-//         rating: PropTypes.number.isRequired,
-//         ratingCount: PropTypes.number.isRequired,
-//         description: PropTypes.string.isRequired,
-//         reviews: PropTypes.arrayOf(
-//             PropTypes.shape({
-//               rating: PropTypes.number.isRequired,
-//               date: PropTypes.instanceOf(Date).isRequired,
-//               // date: PropTypes.string.isRequired,
-//               author: PropTypes.string.isRequired,
-//               review: PropTypes.string.isRequired
-//             })
-//         ).isRequired
-//       }).isRequired
-//   ).isRequired,
-// };
 
-export {App};
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

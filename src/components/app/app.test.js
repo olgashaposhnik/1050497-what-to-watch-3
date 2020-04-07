@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {App} from "./app.jsx";
+import App from "./app.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-// import {FilmData} from "../tests-mock/tests-mock.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const mockStore = configureStore([]);
 
@@ -357,8 +357,6 @@ const FILMS_SHOWED_BY_START = 8;
 
 it(`Should render App`, () => {
   const store = mockStore({
-    // genre: ALL_GENRES,
-    // films
     DATA: {
       films,
       mainFilm: films[0]
@@ -366,22 +364,23 @@ it(`Should render App`, () => {
     STATE: {
       genre: ALL_GENRES,
       showedMovies: FILMS_SHOWED_BY_START
+    },
+    USER: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH
     }
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
-          {/* <App
-            name={FilmData.NAME}
-            genre={FilmData.GENRE}
-            year={FilmData.YEAR}
-            films={films}
-            filmsShowedByStart={FILMS_SHOWED_BY_START}
-          />, */}
-          <App getComments={() => {}} />
+          <App
+            getComments={() => {}}
+            login={() => {}}
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+          />
         </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
+
