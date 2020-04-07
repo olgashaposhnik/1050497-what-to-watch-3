@@ -82,14 +82,14 @@ export default class VideoPlayer extends PureComponent {
         <video
           ref={this._videoRef}
           muted={muted}
-          poster={film.image}
+          poster={film.poster_image}
           width="100%"
           autoPlay={autoPlay}
           controls={false}
           onClick={this.videoPlayerHandler}
           className="player__video"
         >
-          <source src={film.preview} />
+          <source src={film.preview_video_link} />
         </video>
 
         <button type="button" className="player__exit" onClick={onExitButtonClick}>
@@ -128,7 +128,7 @@ export default class VideoPlayer extends PureComponent {
               </>
               )}
             </button>
-            <div className="player__name">{film.title}</div>
+            <div className="player__name">{film.name}</div>
 
             <button
               type="button"
@@ -152,26 +152,26 @@ VideoPlayer.propTypes = {
   autoPlay: PropTypes.bool.isRequired,
   onExitButtonClick: PropTypes.func.isRequired,
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    fullImage: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    duration: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    preview: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(
+    'name': PropTypes.string,
+    'image': PropTypes.string,
+    'poster_image': PropTypes.string,
+    'director': PropTypes.string,
+    'starring': PropTypes.arrayOf(PropTypes.string),
+    'duration': PropTypes.string,
+    'genre': PropTypes.string,
+    'year': PropTypes.number,
+    'rating': PropTypes.number,
+    'ratingCount': PropTypes.number,
+    'description': PropTypes.string,
+    'preview_video_link': PropTypes.string,
+    'reviews': PropTypes.arrayOf(
         PropTypes.shape({
-          rating: PropTypes.number.isRequired,
+          rating: PropTypes.number,
+          date: PropTypes.instanceOf(Date),
           // date: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired,
-          author: PropTypes.string.isRequired,
-          review: PropTypes.string.isRequired
+          author: PropTypes.string,
+          review: PropTypes.string
         })
-    ).isRequired
-  }).isRequired
+    )
+  }),
 };

@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/state/state.js";
+import {getFilms} from "../../reducer/data/selectors.js";
+import {getFilmsShowedByStart} from "../../reducer/state/selectors.js";
 
 const ShowMoreButton = ({films, filmsShowedByStart, showMoreFilms}) => {
   return filmsShowedByStart < films.length ? (
@@ -16,8 +18,8 @@ const ShowMoreButton = ({films, filmsShowedByStart, showMoreFilms}) => {
 };
 
 const mapStateToProps = (state) => ({
-  films: state.films,
-  filmsShowedByStart: state.filmsShowedByStart
+  films: getFilms(state),
+  filmsShowedByStart: getFilmsShowedByStart(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,28 +31,28 @@ const mapDispatchToProps = (dispatch) => ({
 ShowMoreButton.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        fullImage: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        duration: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        year: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        ratingCount: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        image: PropTypes.string,
+        fullImage: PropTypes.string,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        duration: PropTypes.string,
+        genre: PropTypes.string,
+        year: PropTypes.number,
+        rating: PropTypes.number,
+        ratingCount: PropTypes.number,
+        description: PropTypes.string,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
-              rating: PropTypes.number.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired,
+              rating: PropTypes.number,
+              date: PropTypes.instanceOf(Date),
               // date: PropTypes.string.isRequired,
-              author: PropTypes.string.isRequired,
-              review: PropTypes.string.isRequired
+              author: PropTypes.string,
+              review: PropTypes.string
             })
-        ).isRequired
-      }).isRequired
-  ).isRequired,
+        )
+      })
+  ),
   filmsShowedByStart: PropTypes.number.isRequired,
   showMoreFilms: PropTypes.func.isRequired,
 };

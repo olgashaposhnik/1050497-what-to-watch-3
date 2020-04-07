@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withActiveTab from '../hocs/with-active-tab/with-active-tab.jsx';
+import {connect} from "react-redux";
+import {getComments} from "../../reducer/data/selectors.js";
 
 const Tabs = (props) => {
   const {children, activeTab, onTabChange} = props;
@@ -39,4 +41,8 @@ Tabs.propTypes = {
   ]).isRequired
 };
 
-export default withActiveTab(Tabs);
+const mapStateToProps = (state) => ({
+  comments: getComments(state)
+});
+
+export default connect(mapStateToProps)(withActiveTab(Tabs));

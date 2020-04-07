@@ -7,10 +7,13 @@ import {getRatingTextValue} from "../../utils/utils.js";
 // import films from "../../mocks/films";
 import SimilarFilms from '../similar-films/similar-films.jsx';
 import VideoPlayer from "../video-player/video-player.jsx";
+import {connect} from "react-redux";
+import {getFilms} from "../../reducer/data/selectors.js";
+import {getComments} from "../../reducer/data/selectors.js";
 
 const MORE_LIKE_THIS_COUNT = 4;
 
-const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonClick}) => {
+const FilmPage = ({film, films, comments, onFilmCardClick, isVideoPlaying, onExitButtonClick}) => {
   const getSimilarFilms = () => {
     return (films.filter((item) => item.genre === film.genre)).slice(0, MORE_LIKE_THIS_COUNT);
   };
@@ -27,7 +30,7 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={film.fullImage} alt={film.title} />
+            <img src={film.background_image} alt={film.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -55,10 +58,10 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{film.title}</h2>
+              <h2 className="movie-card__title">{film.name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{film.genre}</span>
-                <span className="movie-card__year">{film.year}</span>
+                <span className="movie-card__year">{film.released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -92,8 +95,8 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
               <img
-                src={film.image}
-                alt={film.title}
+                src={film.preview_image}
+                alt={film.name}
                 width="218"
                 height="327"
               />
@@ -105,7 +108,7 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
                   <div className="movie-rating__score">{film.rating}</div>
                   <p className="movie-rating__meta">
                     <span className="movie-rating__level">{getRatingTextValue(film.rating)}</span>
-                    <span className="movie-rating__count">{film.ratingCount} ratings</span>
+                    <span className="movie-rating__count">{film.scores_count} ratings</span>
                   </p>
                 </div>
                 <div className="movie-card__text">
@@ -131,7 +134,7 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
                   <div className="movie-card__text-col">
                     <p className="movie-card__details-item">
                       <strong className="movie-card__details-name">Run Time</strong>
-                      <span className="movie-card__details-value">{film.duration}</span>
+                      <span className="movie-card__details-value">{film.run_time}</span>
                     </p>
                     <p className="movie-card__details-item">
                       <strong className="movie-card__details-name">Genre</strong>
@@ -139,7 +142,7 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
                     </p>
                     <p className="movie-card__details-item">
                       <strong className="movie-card__details-name">Released</strong>
-                      <span className="movie-card__details-value">{film.year}</span>
+                      <span className="movie-card__details-value">{film.released}</span>
                     </p>
                   </div>
                 </div>
@@ -147,13 +150,13 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
               <Tab name="Reviews">
                 <div className="movie-card__reviews movie-card__row">
                   <div className="movie-card__reviews-col">
-                    {film.reviews.map((review) => (
+                    {comments.map((review) => (
                       <div className="review" key={review.id}>
                         <blockquote className="review__quote">
-                          <p className="review__text">{review.review}</p>
+                          <p className="review__text">{review.comment}</p>
                           <footer className="review__details">
-                            <cite className="review__author">{review.author}</cite>
-                            <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
+                            <cite className="review__author">{review.user.name}</cite>
+                            <time className="review__date" dateTime={review.date}>{review.date}</time>
                           </footer>
                         </blockquote>
                         <div className="review__rating">{review.rating}</div>
@@ -198,53 +201,73 @@ const FilmPage = ({film, films, onFilmCardClick, isVideoPlaying, onExitButtonCli
 
 FilmPage.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    fullImage: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    duration: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(
+    'name': PropTypes.string,
+    'image': PropTypes.string,
+    'poster_image': PropTypes.string,
+    'preview_image': PropTypes.string,
+    'background_image': PropTypes.string,
+    'director': PropTypes.string,
+    'starring': PropTypes.arrayOf(PropTypes.string),
+    'run_time': PropTypes.number,
+    'genre': PropTypes.string,
+    'released': PropTypes.number,
+    'rating': PropTypes.number,
+    'scores_count': PropTypes.number,
+    'description': PropTypes.string,
+    'reviews': PropTypes.arrayOf(
         PropTypes.shape({
-          rating: PropTypes.number.isRequired,
-          // date: PropTypes.instanceOf(Date).isRequired,
-          date: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-          review: PropTypes.string.isRequired
+          rating: PropTypes.number,
+          date: PropTypes.instanceOf(Date),
+          // date: PropTypes.string.isRequired,
+          author: PropTypes.string,
+          review: PropTypes.string
         })
-    ).isRequired
-  }).isRequired,
+    )
+  }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        fullImage: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        duration: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        year: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        ratingCount: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
+        name: PropTypes.string,
+        image: PropTypes.string,
+        fullImage: PropTypes.string,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        duration: PropTypes.string,
+        genre: PropTypes.string,
+        released: PropTypes.number,
+        rating: PropTypes.number,
+        ratingCount: PropTypes.number,
+        description: PropTypes.string,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
-              rating: PropTypes.number.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired,
-              author: PropTypes.string.isRequired,
-              review: PropTypes.string.isRequired
+              rating: PropTypes.number,
+              date: PropTypes.instanceOf(Date),
+              // date: PropTypes.string.isRequired,
+              author: PropTypes.string,
+              review: PropTypes.string
             })
-        ).isRequired
-      }).isRequired
-  ).isRequired,
+        )
+      })
+  ),
   onFilmCardClick: PropTypes.func.isRequired,
   isVideoPlaying: PropTypes.bool.isRequired,
   onExitButtonClick: PropTypes.func.isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape({
+        comment: PropTypes.string,
+        date: PropTypes.string,
+        id: PropTypes.number,
+        rating: PropTypes.number,
+        user: PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string
+        })
+      })
+  )
 };
 
-export default FilmPage;
+const mapStateToProps = (state) => ({
+  films: getFilms(state),
+  comments: getComments(state)
+});
+
+export default connect(mapStateToProps)(FilmPage);

@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
-import {FilmData} from "../tests-mock/tests-mock.js";
+// import {FilmData} from "../tests-mock/tests-mock.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
@@ -357,20 +357,28 @@ const films = [
 
 it(`Should Main render correctly`, () => {
   const store = mockStore({
-    genre: ALL_GENRES,
-    films,
-    filmsShowedByStart: FILMS_SHOWED_BY_START
+    // genre: ALL_GENRES,
+    // films,
+    // filmsShowedByStart: FILMS_SHOWED_BY_START
+    DATA: {
+      films,
+      mainFilm: films[0]
+    },
+    STATE: {
+      genre: ALL_GENRES,
+      showedMovies: FILMS_SHOWED_BY_START
+    }
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
           <Main
-            name={FilmData.NAME}
-            genre={FilmData.GENRE}
-            year={FilmData.YEAR}
-            films={films}
-            film={films[0]}
+            // name={FilmData.NAME}
+            // genre={FilmData.GENRE}
+            // year={FilmData.YEAR}
+            // films={films}
+            // film={films[0]}
             onFilmCardClick={() => {}}
             onExitButtonClick = {() => {}}
           />

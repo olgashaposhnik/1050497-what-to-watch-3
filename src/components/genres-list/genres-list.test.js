@@ -231,6 +231,7 @@ it(`Should render GenresList component`, () => {
     .create(
         <GenresList
           films={films}
+          filteredFilms={films}
           genre={ALL_GENRES}
           changeGenre={() => {}}
           onFilmCardClick={() => {}}

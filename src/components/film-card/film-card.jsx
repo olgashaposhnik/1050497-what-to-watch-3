@@ -14,8 +14,8 @@ const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLe
       <div className="small-movie-card__image">
         {!isPlaying && (
           <img
-            src={film.image}
-            alt={film.title}
+            src={film.poster_image}
+            alt={film.name}
             width="280"
             height="175"
           />
@@ -26,7 +26,7 @@ const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLe
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="#">
-          {film.title}
+          {film.name}
         </a>
       </h3>
     </article>
@@ -35,27 +35,28 @@ const FilmCard = ({film, onFilmCardClick, onFilmCardMouseOver, onFilmCardMouseLe
 
 FilmCard.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    fullImage: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    duration: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(
+    'name': PropTypes.string,
+    'image': PropTypes.string,
+    'poster_image': PropTypes.string,
+    'fullImage': PropTypes.string,
+    'director': PropTypes.string,
+    'starring': PropTypes.arrayOf(PropTypes.string),
+    'duration': PropTypes.string,
+    'genre': PropTypes.string,
+    'year': PropTypes.number,
+    'rating': PropTypes.number,
+    'ratingCount': PropTypes.number,
+    'description': PropTypes.string,
+    'reviews': PropTypes.arrayOf(
         PropTypes.shape({
-          rating: PropTypes.number.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired,
+          rating: PropTypes.number,
+          date: PropTypes.instanceOf(Date),
           // date: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-          review: PropTypes.string.isRequired
+          author: PropTypes.string,
+          review: PropTypes.string
         })
-    ).isRequired
-  }).isRequired,
+    )
+  }),
   isPlaying: PropTypes.bool.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   onFilmCardMouseOver: PropTypes.func.isRequired,
